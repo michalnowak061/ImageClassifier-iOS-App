@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9DC7FC2C2589317200CB7B98 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC7FC2B2589317200CB7B98 /* ImagePicker.swift */; };
+		9DC7FC322589624100CB7B98 /* banana1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DC7FC312589624100CB7B98 /* banana1.jpg */; };
 		9DE839A42589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE839A32589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
 		9DECCA5E258809AC00E4EE7C /* ImageClassifierModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DECCA5D258809AC00E4EE7C /* ImageClassifierModel.swift */; };
 		9DECCA61258908B100E4EE7C /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9DECCA60258908B100E4EE7C /* MobileNet.mlmodel */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		9DC7FC2B2589317200CB7B98 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		9DC7FC312589624100CB7B98 /* banana1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banana1.jpg; sourceTree = "<group>"; };
 		9DE839A32589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
 		9DECCA5D258809AC00E4EE7C /* ImageClassifierModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifierModel.swift; sourceTree = "<group>"; };
 		9DECCA60258908B100E4EE7C /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
@@ -84,7 +86,6 @@
 			children = (
 				9DC7FC2B2589317200CB7B98 /* ImagePicker.swift */,
 				9DECCA5D258809AC00E4EE7C /* ImageClassifierModel.swift */,
-				9DECCA60258908B100E4EE7C /* MobileNet.mlmodel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,6 +111,8 @@
 			children = (
 				9DF940182587C2E1001C44F0 /* Assets.xcassets */,
 				9DF9401D2587C2E1001C44F0 /* Info.plist */,
+				9DC7FC312589624100CB7B98 /* banana1.jpg */,
+				9DECCA60258908B100E4EE7C /* MobileNet.mlmodel */,
 				9DE839A22589156900400F0C /* Extensions */,
 				9DECCA5C2588097A00E4EE7C /* Model */,
 				9DECCA5A2588093D00E4EE7C /* Delegates */,
@@ -176,6 +179,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DC7FC322589624100CB7B98 /* banana1.jpg in Resources */,
 				9DF9401C2587C2E1001C44F0 /* LaunchScreen.storyboard in Resources */,
 				9DF940192587C2E1001C44F0 /* Assets.xcassets in Resources */,
 				9DF940172587C2DD001C44F0 /* Main.storyboard in Resources */,

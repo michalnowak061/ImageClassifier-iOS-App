@@ -9,8 +9,20 @@ import CoreML
 import Vision
 import ImageIO
 
+public protocol ImageClassifierModelDelegate: class {
+    func predictionReady(prediction: String?)
+}
+
 class ImageClassifierModel {
+    private weak var presentationController: UIViewController?
+    private weak var delegate: ImageClassifierModelDelegate?
+    
     var model: VNCoreMLModel?
+    
+    public init(presentationController: UIViewController, delegate: ImageClassifierModelDelegate) {
+        self.presentationController = presentationController
+        self.delegate = delegate
+    }
     
     public func loadModel(input model: MLModel) {
         do {
@@ -21,9 +33,6 @@ class ImageClassifierModel {
     }
     
     public func updateClassifications(for image: UIImage) {
-        //classificationLabel.text = "Classifying..."
-        print("Classifying...")
-        
         let orientation = CGImagePropertyOrientation(image.imageOrientation)
         guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
         
@@ -34,11 +43,6 @@ class ImageClassifierModel {
                     try handler.perform([request])
                 }
             } catch {
-                /*
-                 This handler catches general image processing errors. The `classificationRequest`'s
-                 completion handler `processClassifications(_:error:)` catches errors specific
-                 to processing that request.
-                 */
                 print("Failed to perform classification.\n\(error.localizedDescription)")
             }
         }
@@ -56,27 +60,22 @@ class ImageClassifierModel {
     }
     
     func processClassifications(for request: VNRequest, error: Error?) {
+        var prediction: String = ""
         DispatchQueue.main.async {
             guard let results = request.results else {
-                //self.classificationLabel.text = "Unable to classify image.\n\(error!.localizedDescription)"
                 print("Unable to classify image.\n\(error!.localizedDescription)")
                 return
             }
-            // The `results` will always be `VNClassificationObservation`s, as specified by the Core ML model in this project.
             let classifications = results as! [VNClassificationObservation]
-        
             if classifications.isEmpty {
-                //self.classificationLabel.text = "Nothing recognized."
                 print("Nothing recognized.")
             } else {
-                // Display top classifications ranked by confidence in the UI.
                 let topClassifications = classifications.prefix(2)
                 let descriptions = topClassifications.map { classification in
-                    // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
                    return String(format: "  (%.2f) %@", classification.confidence, classification.identifier)
                 }
-                //self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
-                print("Classification:\n" + descriptions.joined(separator: "\n"))
+                prediction = "Classification:\n" + descriptions.joined(separator: "\n")
+                self.delegate?.predictionReady(prediction: prediction)
             }
         }
     }

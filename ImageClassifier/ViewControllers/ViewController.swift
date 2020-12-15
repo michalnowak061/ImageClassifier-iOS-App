@@ -16,35 +16,51 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.imageClassifierModel = ImageClassifierModel(presentationController: self, delegate: self)
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
-        self.imageClassifierModel = ImageClassifierModel()
-        do {
-            let model = try MobileNet.init(configuration: MLModelConfiguration()).model
-            imageClassifierModel.loadModel(input: model)
-        } catch {
-            
+        if let path = Bundle.main.resourcePath {
+            self.loadModel(withPath: path + "/MobileNet.mlmodelc")
+        } else {
+            print("Path did not exists")
         }
-        
-        if let image = UIImage(named: "banana1.jpg") {
-            self.imageClassifierModel.updateClassifications(for: image)
+    }
+    
+    private func loadModel(withPath path: String) {
+        do {
+            let url = NSURL.fileURL(withPath: path)
+            let model = try MLModel(contentsOf: url)
+            self.imageClassifierModel.loadModel(input: model)
+        } catch {
+            print("Failed to load ML model: \(error)")
         }
     }
     
     // MARK: -- @IBOutle's
     @IBOutlet weak var loadedImageView: UIImageView!
+    @IBOutlet weak var predictionResultTextView: UITextView!
     
     // MARK: -- @IBAction's
     @IBAction func loadButtonPressed(_ sender: UIButton) {
         self.imagePicker.present(from: sender)
-        //self.loadedImage = UIImage(named: "banana1.jpg")
-        //self.loadedImageView.image = self.loadedImage
     }
 }
 
+// MARK: -- extension's
 extension ViewController: ImagePickerDelegate {
-
     func didSelect(image: UIImage?) {
         self.loadedImageView.image = image
+        self.loadedImage = image
+        if let image = loadedImage {
+            self.imageClassifierModel?.updateClassifications(for: image)
+        }
+    }
+}
+
+extension ViewController: ImageClassifierModelDelegate {
+    func predictionReady(prediction: String?) {
+        if prediction != nil {
+            self.predictionResultTextView.text = prediction!
+        }
     }
 }
