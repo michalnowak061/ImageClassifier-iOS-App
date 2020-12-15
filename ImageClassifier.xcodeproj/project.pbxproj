@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9DE839A42589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE839A32589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
+		9DECCA5E258809AC00E4EE7C /* ImageClassifierModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DECCA5D258809AC00E4EE7C /* ImageClassifierModel.swift */; };
+		9DECCA61258908B100E4EE7C /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9DECCA60258908B100E4EE7C /* MobileNet.mlmodel */; };
 		9DF940102587C2DD001C44F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF9400F2587C2DD001C44F0 /* AppDelegate.swift */; };
 		9DF940122587C2DD001C44F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF940112587C2DD001C44F0 /* SceneDelegate.swift */; };
 		9DF940142587C2DD001C44F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF940132587C2DD001C44F0 /* ViewController.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9DE839A32589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
+		9DECCA5D258809AC00E4EE7C /* ImageClassifierModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifierModel.swift; sourceTree = "<group>"; };
+		9DECCA60258908B100E4EE7C /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		9DF9400C2587C2DD001C44F0 /* ImageClassifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageClassifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF9400F2587C2DD001C44F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DF940112587C2DD001C44F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +43,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9DE839A22589156900400F0C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9DE839A32589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9DECCA592588092000E4EE7C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				9DF940152587C2DD001C44F0 /* Main.storyboard */,
+				9DF9401A2587C2E1001C44F0 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		9DECCA5A2588093D00E4EE7C /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				9DF9400F2587C2DD001C44F0 /* AppDelegate.swift */,
+				9DF940112587C2DD001C44F0 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		9DECCA5B2588094E00E4EE7C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9DF940132587C2DD001C44F0 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9DECCA5C2588097A00E4EE7C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9DECCA5D258809AC00E4EE7C /* ImageClassifierModel.swift */,
+				9DECCA60258908B100E4EE7C /* MobileNet.mlmodel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9DF940032587C2DD001C44F0 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +105,13 @@
 		9DF9400E2587C2DD001C44F0 /* ImageClassifier */ = {
 			isa = PBXGroup;
 			children = (
-				9DF9400F2587C2DD001C44F0 /* AppDelegate.swift */,
-				9DF940112587C2DD001C44F0 /* SceneDelegate.swift */,
-				9DF940132587C2DD001C44F0 /* ViewController.swift */,
-				9DF940152587C2DD001C44F0 /* Main.storyboard */,
 				9DF940182587C2E1001C44F0 /* Assets.xcassets */,
-				9DF9401A2587C2E1001C44F0 /* LaunchScreen.storyboard */,
 				9DF9401D2587C2E1001C44F0 /* Info.plist */,
+				9DE839A22589156900400F0C /* Extensions */,
+				9DECCA5C2588097A00E4EE7C /* Model */,
+				9DECCA5A2588093D00E4EE7C /* Delegates */,
+				9DECCA5B2588094E00E4EE7C /* ViewControllers */,
+				9DECCA592588092000E4EE7C /* Storyboards */,
 			);
 			path = ImageClassifier;
 			sourceTree = "<group>";
@@ -138,7 +187,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DF940142587C2DD001C44F0 /* ViewController.swift in Sources */,
+				9DECCA61258908B100E4EE7C /* MobileNet.mlmodel in Sources */,
 				9DF940102587C2DD001C44F0 /* AppDelegate.swift in Sources */,
+				9DECCA5E258809AC00E4EE7C /* ImageClassifierModel.swift in Sources */,
+				9DE839A42589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
 				9DF940122587C2DD001C44F0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
