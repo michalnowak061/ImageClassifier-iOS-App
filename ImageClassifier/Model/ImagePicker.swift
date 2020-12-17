@@ -6,10 +6,6 @@
 //
 import UIKit
 
-public protocol ImagePickerDelegate: class {
-    func didSelect(image: UIImage?)
-}
-
 open class ImagePicker: NSObject {
 
     private let pickerController: UIImagePickerController
@@ -41,7 +37,6 @@ open class ImagePicker: NSObject {
     }
 
     public func present(from sourceView: UIView) {
-
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
         if let action = self.action(for: .camera, title: "Take photo") {

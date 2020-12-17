@@ -9,29 +9,57 @@ import CoreML
 import Vision
 import ImageIO
 
-public protocol ImageClassifierModelDelegate: class {
-    func predictionReady(prediction: String?)
-}
-
 class ImageClassifierModel {
+    // MARK: -- Private variable's
     private weak var presentationController: UIViewController?
     private weak var delegate: ImageClassifierModelDelegate?
+    private var model: VNCoreMLModel?
+    private var modelMetadata: [MLModelMetadataKey : Any]?
+    private var modelClassLabels: [Any]?
     
-    var model: VNCoreMLModel?
-    
-    public init(presentationController: UIViewController, delegate: ImageClassifierModelDelegate) {
-        self.presentationController = presentationController
-        self.delegate = delegate
+    // MARK: -- Public variable's
+    public var modelName: String {
+        get {
+            let name: String = "Model name"
+            return name
+        }
+    }
+    public var modelMetadataDictionary: [String : String] {
+        get {
+            var metadata: [String : String] = [:]
+            if let data = self.modelMetadata {
+                metadata["description"] = data[MLModelMetadataKey(rawValue: "MLModelDescriptionKey")] as? String
+                metadata["author"] = data[MLModelMetadataKey(rawValue: "MLModelAuthorKey")] as? String
+                metadata["license"] = data[MLModelMetadataKey(rawValue: "MLModelLicenseKey")] as? String
+                metadata["version"] = data[MLModelMetadataKey(rawValue: "MLModelVersionKey")] as? String
+            }
+            return metadata
+        }
     }
     
-    public func loadModel(input model: MLModel) {
+    // MARK: -- Private function's
+    private func loadModel(input model: MLModel) {
         do {
             self.model = try VNCoreMLModel(for: model)
         } catch {
             print("Failed to load ML model: \(error)")
         }
     }
-    
+    public init(presentationController: UIViewController, delegate: ImageClassifierModelDelegate) {
+        self.presentationController = presentationController
+        self.delegate = delegate
+    }
+    public func loadModel(withPath path: String) {
+        do {
+            let url = NSURL.fileURL(withPath: path)
+            let model = try MLModel(contentsOf: url)
+            self.modelMetadata = model.modelDescription.metadata
+            //model.modelDescription.
+            self.loadModel(input: model)
+        } catch {
+            print("Failed to load ML model: \(error)")
+        }
+    }
     public func updateClassifications(for image: UIImage) {
         let orientation = CGImagePropertyOrientation(image.imageOrientation)
         guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }

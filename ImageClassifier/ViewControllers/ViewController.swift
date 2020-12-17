@@ -20,19 +20,9 @@ class ViewController: UIViewController {
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
         if let path = Bundle.main.resourcePath {
-            self.loadModel(withPath: path + "/MobileNet.mlmodelc")
+            self.imageClassifierModel.loadModel(withPath: path + "/MobileNet.mlmodelc")
         } else {
             print("Path did not exists")
-        }
-    }
-    
-    private func loadModel(withPath path: String) {
-        do {
-            let url = NSURL.fileURL(withPath: path)
-            let model = try MLModel(contentsOf: url)
-            self.imageClassifierModel.loadModel(input: model)
-        } catch {
-            print("Failed to load ML model: \(error)")
         }
     }
     
