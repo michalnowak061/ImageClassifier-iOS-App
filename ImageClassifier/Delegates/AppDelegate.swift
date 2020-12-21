@@ -14,6 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Custom statubar
+        if #available(iOS 14, *) {
+            // iOS 14 (or newer) Swift code
+        } else {
+            // iOS 14 or older code
+            UINavigationBar.appearance().barStyle = .blackOpaque
+            let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+            statusBar.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        }
         return true
     }
 
