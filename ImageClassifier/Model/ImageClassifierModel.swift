@@ -11,19 +11,15 @@ import ImageIO
 
 class ImageClassifierModel {
     // MARK: -- Private variable's
-    private weak var presentationController: UIViewController?
-    private weak var delegate: ImageClassifierModelDelegate?
     private var model: VNCoreMLModel?
     private var modelMetadata: [MLModelMetadataKey : Any]?
     private var modelClassLabels: [Any]?
-    
+    private var fileManager: FileManager!
+
     // MARK: -- Public variable's
-    public var modelName: String {
-        get {
-            let name: String = "Model name"
-            return name
-        }
-    }
+    public weak var presentationController: UIViewController!
+    public weak var delegate: ImageClassifierModelDelegate!
+    public var modelPathsList: [(name: String, path: String)]!
     public var modelMetadataDictionary: [String : String] {
         get {
             var metadata: [String : String] = [:]
@@ -45,21 +41,32 @@ class ImageClassifierModel {
             print("Failed to load ML model: \(error)")
         }
     }
-    public init(presentationController: UIViewController, delegate: ImageClassifierModelDelegate) {
-        self.presentationController = presentationController
-        self.delegate = delegate
+    
+    // MARK: -- Public function's
+    public init() {
+        self.fileManager = FileManager()
+        self.modelPathsList = []
     }
+    
+    public func loadModelPathsFromFolder(withPath path: String) {
+        self.modelPathsList = fileManager.getFileListFromDirectory(withPath: path, typeOf: "mlmodel")
+    }
+    
     public func loadModel(withPath path: String) {
         do {
             let url = NSURL.fileURL(withPath: path)
             let model = try MLModel(contentsOf: url)
             self.modelMetadata = model.modelDescription.metadata
-            //model.modelDescription.
             self.loadModel(input: model)
         } catch {
             print("Failed to load ML model: \(error)")
         }
     }
+    
+    public func deleteModelPath(atIndex index: Int) {
+        self.modelPathsList.remove(at: index)
+    }
+    
     public func updateClassifications(for image: UIImage) {
         let orientation = CGImagePropertyOrientation(image.imageOrientation)
         guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }

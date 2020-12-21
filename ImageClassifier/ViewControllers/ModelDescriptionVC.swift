@@ -9,14 +9,20 @@ import UIKit
 
 // MARK: -- ModelDescriptionVC class
 class ModelDescriptionVC: UIViewController {
+    // MARK: -- Private variable's
     private var modelName: String?
     private var modelMetadata: [String : String]?
     
+    // MARK: -- Public variable's
+    
+    // MARK: -- Override function's
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
         updateView()
     }
-    // MARK: -- Private method's
+    
+    // MARK: -- Private function's
     private func updateView() {
         if let name = self.modelName {
             self.modelNameLabel.text = name
@@ -28,28 +34,19 @@ class ModelDescriptionVC: UIViewController {
             self.modelVersionTextView.text = data["version"]
         }
     }
-    // MARK: -- Public method's
-    public func setModel(name n: String) {
-        self.modelName = n
+    
+    // MARK: -- Public function's
+    public func setRequiredData(selectedModelName name: String, selectedModelMetadata metadata: [String : String]) {
+        self.modelName = name
+        self.modelMetadata = metadata
     }
-    public func setModel(metadata md: [String : String]) {
-        self.modelMetadata = md
-    }
+    
     // MARK: -- IBOutlet's
     @IBOutlet weak var modelNameLabel: UILabel!
     @IBOutlet weak var modelDescriptionTextView: UITextView!
     @IBOutlet weak var modelAuthorTextView: UITextView!
     @IBOutlet weak var modelLicenseTextView: UITextView!
     @IBOutlet weak var modelVersionTextView: UITextView!
-}
-
-extension ModelDescriptionVC: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-          let fixedWidth = textView.frame.size.width
-          textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-          let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-          var newFrame = textView.frame
-          newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
-          textView.frame = newFrame
-    }
+    
+    // MARK: -- IBAction's
 }

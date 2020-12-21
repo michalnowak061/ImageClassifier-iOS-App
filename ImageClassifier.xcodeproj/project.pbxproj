@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D5802FD258C014E00BCAB14 /* ModelsListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5802FC258C014E00BCAB14 /* ModelsListCVC.swift */; };
+		9D580306258CBFDC00BCAB14 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D580305258CBFDC00BCAB14 /* FileManagerExtensions.swift */; };
+		9D580312258CDC7500BCAB14 /* MobileNet-kopia 6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9D58030C258CDC7400BCAB14 /* MobileNet-kopia 6.mlmodel */; };
+		9D580313258CDC7500BCAB14 /* MobileNet-kopia 5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9D58030D258CDC7400BCAB14 /* MobileNet-kopia 5.mlmodel */; };
+		9D580314258CDC7500BCAB14 /* MobileNet-kopia.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9D58030E258CDC7400BCAB14 /* MobileNet-kopia.mlmodel */; };
+		9D580315258CDC7500BCAB14 /* MobileNet-kopia 4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9D58030F258CDC7400BCAB14 /* MobileNet-kopia 4.mlmodel */; };
+		9D580316258CDC7500BCAB14 /* MobileNet-kopia 3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9D580310258CDC7400BCAB14 /* MobileNet-kopia 3.mlmodel */; };
+		9D580317258CDC7500BCAB14 /* MobileNet-kopia 2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9D580311258CDC7400BCAB14 /* MobileNet-kopia 2.mlmodel */; };
+		9D58031A258CEBFE00BCAB14 /* PredictionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D580319258CEBFE00BCAB14 /* PredictionVC.swift */; };
 		9D7F691B258A865100CABB2A /* ModelDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F691A258A865100CABB2A /* ModelDescriptionVC.swift */; };
 		9D7F691E258A8B1800CABB2A /* ModelsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F691D258A8B1800CABB2A /* ModelsListVC.swift */; };
 		9DC7FC2C2589317200CB7B98 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC7FC2B2589317200CB7B98 /* ImagePicker.swift */; };
@@ -17,13 +26,23 @@
 		9DECCA61258908B100E4EE7C /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9DECCA60258908B100E4EE7C /* MobileNet.mlmodel */; };
 		9DF940102587C2DD001C44F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF9400F2587C2DD001C44F0 /* AppDelegate.swift */; };
 		9DF940122587C2DD001C44F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF940112587C2DD001C44F0 /* SceneDelegate.swift */; };
-		9DF940142587C2DD001C44F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF940132587C2DD001C44F0 /* ViewController.swift */; };
+		9DF940142587C2DD001C44F0 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF940132587C2DD001C44F0 /* MainVC.swift */; };
 		9DF940172587C2DD001C44F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF940152587C2DD001C44F0 /* Main.storyboard */; };
 		9DF940192587C2E1001C44F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF940182587C2E1001C44F0 /* Assets.xcassets */; };
 		9DF9401C2587C2E1001C44F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF9401A2587C2E1001C44F0 /* LaunchScreen.storyboard */; };
+		FAC8ABAB63978F93CD1DD0CB /* Pods_ImageClassifier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA99934B2A4A881EDD1C5705 /* Pods_ImageClassifier.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D5802FC258C014E00BCAB14 /* ModelsListCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsListCVC.swift; sourceTree = "<group>"; };
+		9D580305258CBFDC00BCAB14 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
+		9D58030C258CDC7400BCAB14 /* MobileNet-kopia 6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNet-kopia 6.mlmodel"; sourceTree = "<group>"; };
+		9D58030D258CDC7400BCAB14 /* MobileNet-kopia 5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNet-kopia 5.mlmodel"; sourceTree = "<group>"; };
+		9D58030E258CDC7400BCAB14 /* MobileNet-kopia.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNet-kopia.mlmodel"; sourceTree = "<group>"; };
+		9D58030F258CDC7400BCAB14 /* MobileNet-kopia 4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNet-kopia 4.mlmodel"; sourceTree = "<group>"; };
+		9D580310258CDC7400BCAB14 /* MobileNet-kopia 3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNet-kopia 3.mlmodel"; sourceTree = "<group>"; };
+		9D580311258CDC7400BCAB14 /* MobileNet-kopia 2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNet-kopia 2.mlmodel"; sourceTree = "<group>"; };
+		9D580319258CEBFE00BCAB14 /* PredictionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionVC.swift; sourceTree = "<group>"; };
 		9D7F691A258A865100CABB2A /* ModelDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDescriptionVC.swift; sourceTree = "<group>"; };
 		9D7F691D258A8B1800CABB2A /* ModelsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsListVC.swift; sourceTree = "<group>"; };
 		9DC7FC2B2589317200CB7B98 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -35,11 +54,14 @@
 		9DF9400C2587C2DD001C44F0 /* ImageClassifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageClassifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF9400F2587C2DD001C44F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DF940112587C2DD001C44F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9DF940132587C2DD001C44F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9DF940132587C2DD001C44F0 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		9DF940162587C2DD001C44F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9DF940182587C2E1001C44F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DF9401B2587C2E1001C44F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DF9401D2587C2E1001C44F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F3AB827FC4C14CACD3EDD7A /* Pods-ImageClassifier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageClassifier.debug.xcconfig"; path = "Target Support Files/Pods-ImageClassifier/Pods-ImageClassifier.debug.xcconfig"; sourceTree = "<group>"; };
+		CA99934B2A4A881EDD1C5705 /* Pods_ImageClassifier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageClassifier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDC419CC30C6DA7D08F9E750 /* Pods-ImageClassifier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageClassifier.release.xcconfig"; path = "Target Support Files/Pods-ImageClassifier/Pods-ImageClassifier.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,16 +69,58 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC8ABAB63978F93CD1DD0CB /* Pods_ImageClassifier.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1514757BF5D2C1B6D1823521 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9F3AB827FC4C14CACD3EDD7A /* Pods-ImageClassifier.debug.xcconfig */,
+				CDC419CC30C6DA7D08F9E750 /* Pods-ImageClassifier.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		59FCA5B8239524E8A40B2477 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA99934B2A4A881EDD1C5705 /* Pods_ImageClassifier.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D5802FB258C00F600BCAB14 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				9D5802FC258C014E00BCAB14 /* ModelsListCVC.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		9D580309258CCD4500BCAB14 /* TestModels */ = {
+			isa = PBXGroup;
+			children = (
+				9DECCA60258908B100E4EE7C /* MobileNet.mlmodel */,
+				9D580311258CDC7400BCAB14 /* MobileNet-kopia 2.mlmodel */,
+				9D580310258CDC7400BCAB14 /* MobileNet-kopia 3.mlmodel */,
+				9D58030F258CDC7400BCAB14 /* MobileNet-kopia 4.mlmodel */,
+				9D58030D258CDC7400BCAB14 /* MobileNet-kopia 5.mlmodel */,
+				9D58030C258CDC7400BCAB14 /* MobileNet-kopia 6.mlmodel */,
+				9D58030E258CDC7400BCAB14 /* MobileNet-kopia.mlmodel */,
+			);
+			path = TestModels;
+			sourceTree = "<group>";
+		};
 		9DE839A22589156900400F0C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				9DE839A32589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift */,
+				9D580305258CBFDC00BCAB14 /* FileManagerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -84,7 +148,8 @@
 		9DECCA5B2588094E00E4EE7C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9DF940132587C2DD001C44F0 /* ViewController.swift */,
+				9DF940132587C2DD001C44F0 /* MainVC.swift */,
+				9D580319258CEBFE00BCAB14 /* PredictionVC.swift */,
 				9D7F691D258A8B1800CABB2A /* ModelsListVC.swift */,
 				9D7F691A258A865100CABB2A /* ModelDescriptionVC.swift */,
 			);
@@ -105,6 +170,8 @@
 			children = (
 				9DF9400E2587C2DD001C44F0 /* ImageClassifier */,
 				9DF9400D2587C2DD001C44F0 /* Products */,
+				1514757BF5D2C1B6D1823521 /* Pods */,
+				59FCA5B8239524E8A40B2477 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,12 +188,13 @@
 			children = (
 				9DF940182587C2E1001C44F0 /* Assets.xcassets */,
 				9DF9401D2587C2E1001C44F0 /* Info.plist */,
-				9DECCA60258908B100E4EE7C /* MobileNet.mlmodel */,
 				9DE839A22589156900400F0C /* Extensions */,
 				9DECCA5C2588097A00E4EE7C /* Model */,
 				9DECCA5A2588093D00E4EE7C /* Delegates */,
 				9DECCA5B2588094E00E4EE7C /* ViewControllers */,
+				9D5802FB258C00F600BCAB14 /* CollectionViewCells */,
 				9DECCA592588092000E4EE7C /* Storyboards */,
+				9D580309258CCD4500BCAB14 /* TestModels */,
 			);
 			path = ImageClassifier;
 			sourceTree = "<group>";
@@ -138,9 +206,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DF940202587C2E1001C44F0 /* Build configuration list for PBXNativeTarget "ImageClassifier" */;
 			buildPhases = (
+				5454BAE8C18DA4DAF90D6E77 /* [CP] Check Pods Manifest.lock */,
 				9DF940082587C2DD001C44F0 /* Sources */,
 				9DF940092587C2DD001C44F0 /* Frameworks */,
 				9DF9400A2587C2DD001C44F0 /* Resources */,
+				97B68889C2C13C11526EC242 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,22 +266,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5454BAE8C18DA4DAF90D6E77 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImageClassifier-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97B68889C2C13C11526EC242 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ImageClassifier/Pods-ImageClassifier-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ImageClassifier/Pods-ImageClassifier-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ImageClassifier/Pods-ImageClassifier-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9DF940082587C2DD001C44F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DF940142587C2DD001C44F0 /* ViewController.swift in Sources */,
+				9DF940142587C2DD001C44F0 /* MainVC.swift in Sources */,
 				9DECCA61258908B100E4EE7C /* MobileNet.mlmodel in Sources */,
+				9D580315258CDC7500BCAB14 /* MobileNet-kopia 4.mlmodel in Sources */,
 				9DF940102587C2DD001C44F0 /* AppDelegate.swift in Sources */,
 				9D7F691B258A865100CABB2A /* ModelDescriptionVC.swift in Sources */,
 				9DC7FC392589833800CB7B98 /* ImagePickerDelegate.swift in Sources */,
 				9DC7FC2C2589317200CB7B98 /* ImagePicker.swift in Sources */,
 				9D7F691E258A8B1800CABB2A /* ModelsListVC.swift in Sources */,
+				9D5802FD258C014E00BCAB14 /* ModelsListCVC.swift in Sources */,
 				9DECCA5E258809AC00E4EE7C /* ImageClassifierModel.swift in Sources */,
+				9D580313258CDC7500BCAB14 /* MobileNet-kopia 5.mlmodel in Sources */,
 				9DC7FC362589832400CB7B98 /* ImageClassifierModelDelegate.swift in Sources */,
 				9DE839A42589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
+				9D580306258CBFDC00BCAB14 /* FileManagerExtensions.swift in Sources */,
 				9DF940122587C2DD001C44F0 /* SceneDelegate.swift in Sources */,
+				9D580312258CDC7500BCAB14 /* MobileNet-kopia 6.mlmodel in Sources */,
+				9D580317258CDC7500BCAB14 /* MobileNet-kopia 2.mlmodel in Sources */,
+				9D580316258CDC7500BCAB14 /* MobileNet-kopia 3.mlmodel in Sources */,
+				9D580314258CDC7500BCAB14 /* MobileNet-kopia.mlmodel in Sources */,
+				9D58031A258CEBFE00BCAB14 /* PredictionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +476,7 @@
 		};
 		9DF940212587C2E1001C44F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F3AB827FC4C14CACD3EDD7A /* Pods-ImageClassifier.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -374,6 +496,7 @@
 		};
 		9DF940222587C2E1001C44F0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDC419CC30C6DA7D08F9E750 /* Pods-ImageClassifier.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
