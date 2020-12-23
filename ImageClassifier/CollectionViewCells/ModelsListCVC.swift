@@ -9,6 +9,21 @@ import UIKit
 import SwipeCellKit
 
 class ModelsListCVC: SwipeCollectionViewCell {
+    // MARK: -- Override variable's
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted {
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                    self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                }, completion: nil)
+            } else {
+                UIView.animate(withDuration: 0.2, delay: 0.2, options: .curveLinear, animations: {
+                    self.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }, completion: nil)
+            }
+        }
+    }
+    
     // MARK: -- Public variable's
     public let identifier: String = "ModelsListCVC"
     public var modelIcon: UIImage? {

@@ -16,6 +16,7 @@ class ModelsListVC: UIViewController {
     private var modelsPathList: [(name: String, path: String)]!
     private var selectedModel: VNCoreMLModel?
     private var selectedModelIndex: Int?
+    private var debouncingPreventionTimer: Timer!
     
     // MARK: -- Override function's
     override func viewDidLoad() {
@@ -145,8 +146,22 @@ extension ModelsListVC: UICollectionViewDelegate, UICollectionViewDataSource, Sw
     }
         
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectedModelIndex = indexPath.row
-        performSegue(withIdentifier: "showPredictionVC", sender: nil)
+        let seconds = 0.2
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            self.selectedModelIndex = indexPath.row
+            self.performSegue(withIdentifier: "showPredictionVC", sender: nil)
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.modelsCollectionView.allowsSelection = false
+        debouncingPreventionTimer?.invalidate()
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        debouncingPreventionTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: false) { timer in
+            self.modelsCollectionView.allowsSelection = true
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {

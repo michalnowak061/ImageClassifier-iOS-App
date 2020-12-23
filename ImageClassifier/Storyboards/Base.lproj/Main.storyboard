@@ -31,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXx-LP-aS3">
-                                <rect key="frame" x="147" y="522.5" width="120" height="30"/>
+                                <rect key="frame" x="147" y="502.5" width="120" height="30"/>
                                 <color key="backgroundColor" red="0.1185089871" green="0.1185325012" blue="0.1185038313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RXx-LP-aS3" secondAttribute="height" multiplier="4:1" id="1bm-Jb-s8d"/>
@@ -40,7 +40,30 @@
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="maj-0q-PkO" kind="show" identifier="showModelsListVC" id="6E2-K2-cw2"/>
+                                    <action selector="startButtonPressed:" destination="5gm-EQ-9i1" eventType="touchUpInside" id="nfy-9t-tdx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nsb-3b-eOY">
+                                <rect key="frame" x="147" y="539.5" width="120" height="30"/>
+                                <color key="backgroundColor" red="0.1185089871" green="0.1185325012" blue="0.1185038313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="settingsButtonPressed:" destination="5gm-EQ-9i1" eventType="touchUpInside" id="URS-CO-8s2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNh-zU-GoV">
+                                <rect key="frame" x="147" y="576.5" width="120" height="30"/>
+                                <color key="backgroundColor" red="0.1185089871" green="0.1185325012" blue="0.1185038313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SNh-zU-GoV" secondAttribute="height" multiplier="4:1" id="aIE-NT-Mb5"/>
+                                </constraints>
+                                <state key="normal" title="About">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="aboutButtonPressed:" destination="5gm-EQ-9i1" eventType="touchUpInside" id="ooz-2H-kSu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -49,15 +72,23 @@
                         <constraints>
                             <constraint firstItem="LBU-qc-JN9" firstAttribute="centerX" secondItem="Z0a-et-HXS" secondAttribute="centerX" id="2hp-z2-bct"/>
                             <constraint firstItem="LBU-qc-JN9" firstAttribute="top" secondItem="Aer-qM-bOM" secondAttribute="bottom" constant="7.5" id="Bpj-Qv-ydQ"/>
-                            <constraint firstItem="RXx-LP-aS3" firstAttribute="top" secondItem="LBU-qc-JN9" secondAttribute="bottom" constant="60" id="J5l-4c-ben"/>
+                            <constraint firstItem="RXx-LP-aS3" firstAttribute="top" secondItem="LBU-qc-JN9" secondAttribute="bottom" constant="40" id="J5l-4c-ben"/>
                             <constraint firstItem="RXx-LP-aS3" firstAttribute="centerX" secondItem="Z0a-et-HXS" secondAttribute="centerX" id="MPf-Kp-zxe"/>
+                            <constraint firstItem="SNh-zU-GoV" firstAttribute="centerX" secondItem="Z0a-et-HXS" secondAttribute="centerX" id="Vkw-8j-otm"/>
+                            <constraint firstItem="SNh-zU-GoV" firstAttribute="top" secondItem="Nsb-3b-eOY" secondAttribute="bottom" constant="7" id="cuq-oT-seU"/>
                             <constraint firstItem="LBU-qc-JN9" firstAttribute="centerY" secondItem="Z0a-et-HXS" secondAttribute="centerY" id="hB2-eU-4rl"/>
+                            <constraint firstItem="Nsb-3b-eOY" firstAttribute="top" secondItem="RXx-LP-aS3" secondAttribute="bottom" constant="7" id="mG4-50-OYC"/>
+                            <constraint firstItem="Nsb-3b-eOY" firstAttribute="centerX" secondItem="Z0a-et-HXS" secondAttribute="centerX" id="req-iD-HMh"/>
+                            <constraint firstItem="Nsb-3b-eOY" firstAttribute="width" secondItem="Nsb-3b-eOY" secondAttribute="height" multiplier="4:1" id="vuu-yf-elL"/>
                             <constraint firstItem="Aer-qM-bOM" firstAttribute="centerX" secondItem="Z0a-et-HXS" secondAttribute="centerX" id="wPE-Wq-TCN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GT8-Uj-6uT"/>
                     <connections>
+                        <outlet property="aboutButton" destination="SNh-zU-GoV" id="bhe-Ac-4uN"/>
+                        <outlet property="settingsButton" destination="Nsb-3b-eOY" id="b6K-ZU-wt9"/>
                         <outlet property="startButton" destination="RXx-LP-aS3" id="q4A-FQ-TpZ"/>
+                        <segue destination="maj-0q-PkO" kind="show" identifier="showModelsListVC" id="HaL-FK-bXi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Sm-ff-BuO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
