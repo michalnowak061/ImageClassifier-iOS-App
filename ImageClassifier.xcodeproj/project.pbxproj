@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D175BFD25920F5100F1B051 /* UICollectionViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D175BFC25920F5100F1B051 /* UICollectionViewCellExtensions.swift */; };
+		9D175C0125922F2700F1B051 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D175C0025922F2700F1B051 /* UIImageExtensions.swift */; };
+		9D175C04259233AC00F1B051 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D175C03259233AC00F1B051 /* UIImageViewExtensions.swift */; };
+		9D175C07259255E300F1B051 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D175C06259255E300F1B051 /* StringExtensions.swift */; };
 		9D5802FD258C014E00BCAB14 /* ModelsListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5802FC258C014E00BCAB14 /* ModelsListCVC.swift */; };
 		9D580306258CBFDC00BCAB14 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D580305258CBFDC00BCAB14 /* FileManagerExtensions.swift */; };
 		9D580312258CDC7500BCAB14 /* MobileNet-kopia 6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9D58030C258CDC7400BCAB14 /* MobileNet-kopia 6.mlmodel */; };
@@ -18,6 +22,7 @@
 		9D58031A258CEBFE00BCAB14 /* PredictionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D580319258CEBFE00BCAB14 /* PredictionVC.swift */; };
 		9D7F691B258A865100CABB2A /* ModelDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F691A258A865100CABB2A /* ModelDescriptionVC.swift */; };
 		9D7F691E258A8B1800CABB2A /* ModelsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F691D258A8B1800CABB2A /* ModelsListVC.swift */; };
+		9D85A2252593B71F00CE4ECC /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D85A2242593B71F00CE4ECC /* UIButtonExtensions.swift */; };
 		9DC7FC2C2589317200CB7B98 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC7FC2B2589317200CB7B98 /* ImagePicker.swift */; };
 		9DC7FC362589832400CB7B98 /* ImageClassifierModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC7FC352589832400CB7B98 /* ImageClassifierModelDelegate.swift */; };
 		9DC7FC392589833800CB7B98 /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC7FC382589833800CB7B98 /* ImagePickerDelegate.swift */; };
@@ -34,6 +39,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D175BFC25920F5100F1B051 /* UICollectionViewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellExtensions.swift; sourceTree = "<group>"; };
+		9D175C0025922F2700F1B051 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		9D175C03259233AC00F1B051 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		9D175C06259255E300F1B051 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		9D5802FC258C014E00BCAB14 /* ModelsListCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsListCVC.swift; sourceTree = "<group>"; };
 		9D580305258CBFDC00BCAB14 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		9D58030C258CDC7400BCAB14 /* MobileNet-kopia 6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNet-kopia 6.mlmodel"; sourceTree = "<group>"; };
@@ -45,6 +54,7 @@
 		9D580319258CEBFE00BCAB14 /* PredictionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionVC.swift; sourceTree = "<group>"; };
 		9D7F691A258A865100CABB2A /* ModelDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDescriptionVC.swift; sourceTree = "<group>"; };
 		9D7F691D258A8B1800CABB2A /* ModelsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsListVC.swift; sourceTree = "<group>"; };
+		9D85A2242593B71F00CE4ECC /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		9DC7FC2B2589317200CB7B98 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		9DC7FC352589832400CB7B98 /* ImageClassifierModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifierModelDelegate.swift; sourceTree = "<group>"; };
 		9DC7FC382589833800CB7B98 /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
@@ -82,7 +92,6 @@
 				9F3AB827FC4C14CACD3EDD7A /* Pods-ImageClassifier.debug.xcconfig */,
 				CDC419CC30C6DA7D08F9E750 /* Pods-ImageClassifier.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -121,6 +130,11 @@
 			children = (
 				9DE839A32589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift */,
 				9D580305258CBFDC00BCAB14 /* FileManagerExtensions.swift */,
+				9D175C06259255E300F1B051 /* StringExtensions.swift */,
+				9D175BFC25920F5100F1B051 /* UICollectionViewCellExtensions.swift */,
+				9D175C0025922F2700F1B051 /* UIImageExtensions.swift */,
+				9D175C03259233AC00F1B051 /* UIImageViewExtensions.swift */,
+				9D85A2242593B71F00CE4ECC /* UIButtonExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -313,7 +327,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D175C07259255E300F1B051 /* StringExtensions.swift in Sources */,
 				9DF940142587C2DD001C44F0 /* MainVC.swift in Sources */,
+				9D175C0125922F2700F1B051 /* UIImageExtensions.swift in Sources */,
 				9DECCA61258908B100E4EE7C /* MobileNet.mlmodel in Sources */,
 				9D580315258CDC7500BCAB14 /* MobileNet-kopia 4.mlmodel in Sources */,
 				9DF940102587C2DD001C44F0 /* AppDelegate.swift in Sources */,
@@ -321,6 +337,7 @@
 				9DC7FC392589833800CB7B98 /* ImagePickerDelegate.swift in Sources */,
 				9DC7FC2C2589317200CB7B98 /* ImagePicker.swift in Sources */,
 				9D7F691E258A8B1800CABB2A /* ModelsListVC.swift in Sources */,
+				9D175BFD25920F5100F1B051 /* UICollectionViewCellExtensions.swift in Sources */,
 				9D5802FD258C014E00BCAB14 /* ModelsListCVC.swift in Sources */,
 				9DECCA5E258809AC00E4EE7C /* ImageClassifierModel.swift in Sources */,
 				9D580313258CDC7500BCAB14 /* MobileNet-kopia 5.mlmodel in Sources */,
@@ -328,7 +345,9 @@
 				9DE839A42589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
 				9D580306258CBFDC00BCAB14 /* FileManagerExtensions.swift in Sources */,
 				9DF940122587C2DD001C44F0 /* SceneDelegate.swift in Sources */,
+				9D175C04259233AC00F1B051 /* UIImageViewExtensions.swift in Sources */,
 				9D580312258CDC7500BCAB14 /* MobileNet-kopia 6.mlmodel in Sources */,
+				9D85A2252593B71F00CE4ECC /* UIButtonExtensions.swift in Sources */,
 				9D580317258CDC7500BCAB14 /* MobileNet-kopia 2.mlmodel in Sources */,
 				9D580316258CDC7500BCAB14 /* MobileNet-kopia 3.mlmodel in Sources */,
 				9D580314258CDC7500BCAB14 /* MobileNet-kopia.mlmodel in Sources */,

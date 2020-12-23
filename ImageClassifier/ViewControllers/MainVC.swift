@@ -23,6 +23,8 @@ class MainVC: UIViewController {
         } else {
             print("Path did not exists")
         }
+        
+        self.startButtonSetup()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
@@ -35,4 +37,13 @@ class MainVC: UIViewController {
             break
         }
     }
+    
+    // MARK: -- Private function's
+    private func startButtonSetup() {
+        self.startButton.setRoundedCorners(cornerRadius: 10.0)
+    }
+    
+    // MARK: -- IBOutlet's
+    @IBOutlet weak var startButton: UIButton!
+    
 }

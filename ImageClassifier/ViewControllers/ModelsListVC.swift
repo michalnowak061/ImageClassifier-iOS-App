@@ -25,6 +25,11 @@ class ModelsListVC: UIViewController {
         self.searchBarSetup()
     }
     
+    override func viewWillLayoutSubviews() {
+       super.viewWillLayoutSubviews()
+       self.modelsCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         switch segue.identifier {
         case "showPredictionVC":
@@ -59,13 +64,6 @@ class ModelsListVC: UIViewController {
         self.modelsCollectionView.delegate = self
         self.modelsCollectionView.dataSource = self
         self.modelsCollectionView.keyboardDismissMode = .onDrag
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: self.view.frame.width * 0.9,
-                                 height: self.view.frame.height * 0.1)
-        
-        self.modelsCollectionView.collectionViewLayout = layout
     }
     
     private func searchBarSetup() {
@@ -92,10 +90,12 @@ class ModelsListVC: UIViewController {
 extension ModelsListVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         func filteredPaths(searchText: String) -> [(String, String)] {
-            let locations = self.modelsPathList.filter {
-                $0.0.localizedLowercase.contains(searchText)
+            let paths = self.modelsPathList.filter {
+                let string = String().removeSpecialCharsFromString(text: $0.0)
+                let keyword = String().removeSpecialCharsFromString(text: searchText)
+                return string.containsIgnoringCase(find: keyword)
             }
-            return locations
+            return paths
         }
         if let item = self.searchBar.text, !item.isEmpty {
             self.modelsPathList = self.imageClassifierModel.modelPathsList
@@ -109,7 +109,13 @@ extension ModelsListVC: UISearchBarDelegate {
     }
 }
 
-extension ModelsListVC: UICollectionViewDelegate, UICollectionViewDataSource, SwipeCollectionViewCellDelegate {
+extension ModelsListVC: UICollectionViewDelegate, UICollectionViewDataSource, SwipeCollectionViewCellDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = self.view.frame.width * 0.85
+        let height = CGFloat(100.0)
+        return CGSize(width: width, height: height)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.modelsPathList.count
     }
@@ -118,13 +124,26 @@ extension ModelsListVC: UICollectionViewDelegate, UICollectionViewDataSource, Sw
         let cell = self.modelsCollectionView.dequeueReusableCell(withReuseIdentifier: ModelsListCVC().identifier,
                                                                  for: indexPath) as! ModelsListCVC
         let modelName = self.modelsPathList[indexPath.row].name
+        let modelPath = self.modelsPathList[indexPath.row].path
+        let modelURL = URL(fileURLWithPath: modelPath)
+        var swiftIcon = UIImage.icon(forFileURL: modelURL, preferredSize: .smallest)
+        swiftIcon = swiftIcon.imageWithInsets(insetDimen: 4.0)
+        
+        let size = FileManager().sizeForLocalFilePath(filePath: modelPath)
+        let sizeString = FileManager().covertToFileString(with: size)
+        
+        let date = (try? FileManager.default.attributesOfItem(atPath: modelPath))?[.creationDate] as? Date
+        
+        cell.viewSetup()
+        cell.modelIcon = swiftIcon
+        cell.modelName = modelName
+        cell.modelFileSize = sizeString
+        cell.modelCreateDate = date?.description ?? ""
         cell.delegate = self
-        cell.set(modelName: modelName)
-        cell.layer.cornerRadius = 10
-        cell.layer.masksToBounds = true
+        
         return cell
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedModelIndex = indexPath.row
         performSegue(withIdentifier: "showPredictionVC", sender: nil)
@@ -143,32 +162,15 @@ extension ModelsListVC: UICollectionViewDelegate, UICollectionViewDataSource, Sw
             self.imageClassifierModel.deleteModelPath(atIndex: indexPath.row)
             self.modelsPathList.remove(at: indexPath.row)
         }
-        deleteAction.backgroundColor = .red
+        deleteAction.backgroundColor = UIColor(red: 207.0/255.0, green: 73.0/255.0, blue: 79.0/255.0, alpha: 1.0)
         
         let infoAction = SwipeAction(style: .default, title: "Info") { action, indexPath in
             self.selectedModelIndex = indexPath.row
             self.performSegue(withIdentifier: "showModelDescriptionVC", sender: nil)
         }
-        infoAction.backgroundColor = .systemBlue
+        infoAction.backgroundColor = UIColor(red: 84.0/255.0, green: 136.0/255.0, blue: 243.0/255.0, alpha: 1.0)
         infoAction.hidesWhenSelected = true
         
         return [deleteAction, infoAction]
-    }
-}
-
-extension UIViewController {
-
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard(_:)))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-
-    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-
-        if let nav = self.navigationController {
-            nav.view.endEditing(true)
-        }
     }
 }
