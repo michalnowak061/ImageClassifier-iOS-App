@@ -32,6 +32,7 @@ class ImageClassifierModel {
             return metadata
         }
     }
+    public var classificationResult: ClassificationResult?
     
     // MARK: -- Private function's
     private func loadModel(input model: MLModel) {
@@ -95,7 +96,6 @@ class ImageClassifierModel {
     }
     
     func processClassifications(for request: VNRequest, error: Error?) {
-        var prediction: String = ""
         DispatchQueue.main.async {
             guard let results = request.results else {
                 print("Unable to classify image.\n\(error!.localizedDescription)")
@@ -105,12 +105,10 @@ class ImageClassifierModel {
             if classifications.isEmpty {
                 print("Nothing recognized.")
             } else {
-                let topClassifications = classifications.prefix(2)
-                let descriptions = topClassifications.map { classification in
-                   return String(format: "  (%.2f) %@", classification.confidence, classification.identifier)
+                self.classificationResult = ClassificationResult(classifications: classifications)
+                if self.classificationResult != nil {
+                    self.delegate?.predictionReady(prediction: self.classificationResult!)
                 }
-                prediction = "Classification:\n" + descriptions.joined(separator: "\n")
-                self.delegate?.predictionReady(prediction: prediction)
             }
         }
     }

@@ -7,5 +7,5 @@
 import Foundation
 
 public protocol ImageClassifierModelDelegate: class {
-    func predictionReady(prediction: String?)
+    func predictionReady(prediction: ClassificationResult)
 }
