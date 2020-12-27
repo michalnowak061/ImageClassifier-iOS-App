@@ -11,6 +11,11 @@ import ImageIO
 import MBCircularProgressBar
 
 class PredictionVC: UIViewController {
+    // MARK: -- Private parameter's
+    private let buttonsFontScaleFactor: CGFloat = 0.4
+    private let roundedCornersRadius: CGFloat = 10.0
+    private let predictionProgressBarDuration: Double = 2.0
+    
     // MARK: -- Private variable's
     private var imageClassifierModel: ImageClassifierModel!
     private var imagePicker: ImagePicker!
@@ -21,7 +26,9 @@ class PredictionVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
-        showMoreLabelsButtonSetup()
+        self.showMoreLabelsButtonSetup()
+        self.anotherModelButtonSetup()
+        self.menuButtonSetup()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,6 +37,12 @@ class PredictionVC: UIViewController {
             let moreLabelsVC = segue.destination as? MoreLabelsVC
             moreLabelsVC?.setRequiredData(imageClassifierModel: self.imageClassifierModel)
             break
+        case "showModelsListVC":
+            let modelsListVC = segue.destination as? ModelsListVC
+            modelsListVC?.setRequiredData(imageClassifierModel: self.imageClassifierModel)
+            break
+        case "showMainVC":
+            break
         default:
             break
         }
@@ -37,12 +50,59 @@ class PredictionVC: UIViewController {
     
     // MARK: -- Private function's
     private func showMoreLabelsButtonSetup() {
-        self.showMoreLabelsButton.setRoundedCorners(cornerRadius: 10.0)
+        self.showMoreLabelsButton.setRoundedCorners(cornerRadius: self.roundedCornersRadius)
+        self.showMoreLabelsButton.isHidden = true
     }
     
-    private func predictionProgressBarShowProgress(_ progress: CGFloat) {
-        UIView.animate(withDuration: 5.0) {
-            self.predictionProgressBar.value = progress * 100
+    private func anotherModelButtonSetup() {
+        self.anotherModelButton.setRoundedCorners(cornerRadius: self.roundedCornersRadius)
+        self.anotherModelButton.isHidden = true
+    }
+    
+    private func menuButtonSetup() {
+        self.menuButton.setRoundedCorners(cornerRadius: self.roundedCornersRadius)
+        self.menuButton.isHidden = true
+    }
+    
+    private func showMoreLabelsButtonShow(withDuration duration: Double) {
+        Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { timer in
+            self.showMoreLabelsButton.isHidden = false
+        }
+    }
+    
+    private func anotherModelButtonShow(withDuration duration: Double) {
+        Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { timer in
+            self.anotherModelButton.isHidden = false
+        }
+    }
+    
+    private func menuButtonShow(withDuration duration: Double) {
+        Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { timer in
+            self.menuButton.isHidden = false
+        }
+    }
+    
+    private func predictionProgressBarShowProgress(prediction: ClassificationResult, withDuration duration: Double) {
+        UIView.animate(withDuration: duration) {
+            if let progress = prediction.classification(atIndex: 0)?.prediction {
+                self.predictionProgressBar.value = CGFloat(progress * 100)
+            }
+        }
+    }
+    
+    private func predictionLabelShowPrediction(prediction: ClassificationResult, withDuration duration: Double) {
+        let timeInterval = 0.1
+        let numberOfIteration = Int(duration / timeInterval)
+        var counter = 0
+        Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { timer in
+            let randomIndex = Int.random(in: 0...prediction.labelsCount)
+            self.predictionLabel.text = prediction.classification(atIndex: randomIndex)?.label
+            
+            counter += 1
+            if counter >= numberOfIteration {
+                timer.invalidate()
+                self.predictionLabel.text = prediction.classification(atIndex: 0)?.label
+            }
         }
     }
     
@@ -58,6 +118,8 @@ class PredictionVC: UIViewController {
     @IBOutlet weak var predictionProgressBar: MBCircularProgressBarView!
     @IBOutlet weak var predictionLabel: UILabel!
     @IBOutlet weak var showMoreLabelsButton: UIButton!
+    @IBOutlet weak var anotherModelButton: UIButton!
+    @IBOutlet weak var menuButton: UIButton!
     
     // MARK: -- @IBAction's
     @IBAction func loadButtonPressed(_ sender: UIButton) {
@@ -66,6 +128,14 @@ class PredictionVC: UIViewController {
     
     @IBAction func showMoreLabelsButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "showMoreLabelsVC", sender: nil)
+    }
+    
+    @IBAction func anotherModelButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "showModelsListVC", sender: nil)
+    }
+    
+    @IBAction func menuButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "showMainVC", sender: nil)
     }
 }
 
@@ -81,12 +151,10 @@ extension PredictionVC: ImagePickerDelegate {
 }
 extension PredictionVC: ImageClassifierModelDelegate {
     func predictionReady(prediction: ClassificationResult) {
-        if let prediction = prediction.classification(atIndex: 0) {
-            let label = prediction.label
-            let probability = prediction.prediction
-            
-            self.predictionProgressBarShowProgress(CGFloat(probability))
-            self.predictionLabel.text = label
-        }
+        self.predictionProgressBarShowProgress(prediction: prediction, withDuration: self.predictionProgressBarDuration)
+        self.predictionLabelShowPrediction(prediction: prediction, withDuration: self.predictionProgressBarDuration)
+        self.showMoreLabelsButtonShow(withDuration: self.predictionProgressBarDuration)
+        self.anotherModelButtonShow(withDuration: self.predictionProgressBarDuration)
+        self.menuButtonShow(withDuration: self.predictionProgressBarDuration)
     }
 }

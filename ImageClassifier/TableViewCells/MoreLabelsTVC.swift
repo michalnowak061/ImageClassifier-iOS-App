@@ -34,7 +34,7 @@ class MoreLabelsTVC: UITableViewCell {
     
     // MARK: -- Private function's
     private func predictionProgressBarShowProgress(_ progress: CGFloat) {
-        UIView.animate(withDuration: 5.0) {
+        UIView.animate(withDuration: 1.0) {
             self.predictionProgressBar.value = progress * 100
         }
     }

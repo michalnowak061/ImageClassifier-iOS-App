@@ -22,4 +22,17 @@ extension UIButton {
             self.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
     }
+    
+    @IBInspectable var adjustFontSizeToWidth: Bool {
+        get {
+            return self.titleLabel?.adjustsFontSizeToFitWidth ?? false
+        }
+        set {
+            self.titleLabel?.numberOfLines = 1
+            self.titleLabel?.adjustsFontSizeToFitWidth = newValue;
+            self.titleLabel?.lineBreakMode = .byClipping;
+            self.titleLabel?.baselineAdjustment = .alignCenters
+            self.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        }
+    }
 }
