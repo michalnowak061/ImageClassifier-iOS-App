@@ -26,9 +26,7 @@ class PredictionVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
-        self.showMoreLabelsButtonSetup()
-        self.anotherModelButtonSetup()
-        self.menuButtonSetup()
+        self.defaultViewSetup()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -36,10 +34,6 @@ class PredictionVC: UIViewController {
         case "showMoreLabelsVC":
             let moreLabelsVC = segue.destination as? MoreLabelsVC
             moreLabelsVC?.setRequiredData(imageClassifierModel: self.imageClassifierModel)
-            break
-        case "showModelsListVC":
-            let modelsListVC = segue.destination as? ModelsListVC
-            modelsListVC?.setRequiredData(imageClassifierModel: self.imageClassifierModel)
             break
         case "showMainVC":
             break
@@ -49,14 +43,16 @@ class PredictionVC: UIViewController {
     }
     
     // MARK: -- Private function's
+    private func defaultViewSetup() {
+        self.predictionProgressBar.value = 0
+        self.predictionLabel.text = "Prediction label"
+        self.showMoreLabelsButtonSetup()
+        self.menuButtonSetup()
+    }
+    
     private func showMoreLabelsButtonSetup() {
         self.showMoreLabelsButton.setRoundedCorners(cornerRadius: self.roundedCornersRadius)
         self.showMoreLabelsButton.isHidden = true
-    }
-    
-    private func anotherModelButtonSetup() {
-        self.anotherModelButton.setRoundedCorners(cornerRadius: self.roundedCornersRadius)
-        self.anotherModelButton.isHidden = true
     }
     
     private func menuButtonSetup() {
@@ -67,12 +63,6 @@ class PredictionVC: UIViewController {
     private func showMoreLabelsButtonShow(withDuration duration: Double) {
         Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { timer in
             self.showMoreLabelsButton.isHidden = false
-        }
-    }
-    
-    private func anotherModelButtonShow(withDuration duration: Double) {
-        Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { timer in
-            self.anotherModelButton.isHidden = false
         }
     }
     
@@ -118,20 +108,16 @@ class PredictionVC: UIViewController {
     @IBOutlet weak var predictionProgressBar: MBCircularProgressBarView!
     @IBOutlet weak var predictionLabel: UILabel!
     @IBOutlet weak var showMoreLabelsButton: UIButton!
-    @IBOutlet weak var anotherModelButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
     
     // MARK: -- @IBAction's
     @IBAction func loadButtonPressed(_ sender: UIButton) {
+        self.defaultViewSetup()
         self.imagePicker.present(from: sender)
     }
     
     @IBAction func showMoreLabelsButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "showMoreLabelsVC", sender: nil)
-    }
-    
-    @IBAction func anotherModelButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "showModelsListVC", sender: nil)
     }
     
     @IBAction func menuButtonPressed(_ sender: UIButton) {
@@ -154,7 +140,6 @@ extension PredictionVC: ImageClassifierModelDelegate {
         self.predictionProgressBarShowProgress(prediction: prediction, withDuration: self.predictionProgressBarDuration)
         self.predictionLabelShowPrediction(prediction: prediction, withDuration: self.predictionProgressBarDuration)
         self.showMoreLabelsButtonShow(withDuration: self.predictionProgressBarDuration)
-        self.anotherModelButtonShow(withDuration: self.predictionProgressBarDuration)
         self.menuButtonShow(withDuration: self.predictionProgressBarDuration)
     }
 }

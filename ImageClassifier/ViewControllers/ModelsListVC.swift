@@ -65,6 +65,7 @@ class ModelsListVC: UIViewController {
         self.modelsCollectionView.delegate = self
         self.modelsCollectionView.dataSource = self
         self.modelsCollectionView.keyboardDismissMode = .onDrag
+        self.modelsCollectionView.alwaysBounceVertical = true
     }
     
     private func searchBarSetup() {

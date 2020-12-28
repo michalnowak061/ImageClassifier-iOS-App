@@ -27,6 +27,8 @@ class MainVC: UIViewController {
         self.startButtonSetup()
         self.settingsButtonSetup()
         self.aboutButtonSetup()
+        
+        self.navigationController?.popToRootViewController(animated: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
