@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D175BFD25920F5100F1B051 /* UICollectionViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D175BFC25920F5100F1B051 /* UICollectionViewCellExtensions.swift */; };
+		9D0C57F7259A371100E8E451 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C57F6259A371000E8E451 /* UIViewExtensions.swift */; };
 		9D175C0125922F2700F1B051 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D175C0025922F2700F1B051 /* UIImageExtensions.swift */; };
-		9D175C04259233AC00F1B051 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D175C03259233AC00F1B051 /* UIImageViewExtensions.swift */; };
 		9D175C07259255E300F1B051 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D175C06259255E300F1B051 /* StringExtensions.swift */; };
 		9D5802FD258C014E00BCAB14 /* ModelsListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5802FC258C014E00BCAB14 /* ModelsListCVC.swift */; };
 		9D580306258CBFDC00BCAB14 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D580305258CBFDC00BCAB14 /* FileManagerExtensions.swift */; };
@@ -42,9 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9D175BFC25920F5100F1B051 /* UICollectionViewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellExtensions.swift; sourceTree = "<group>"; };
+		9D0C57F6259A371000E8E451 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		9D175C0025922F2700F1B051 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
-		9D175C03259233AC00F1B051 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		9D175C06259255E300F1B051 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		9D5802FC258C014E00BCAB14 /* ModelsListCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsListCVC.swift; sourceTree = "<group>"; };
 		9D580305258CBFDC00BCAB14 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
@@ -145,10 +143,9 @@
 				9DE839A32589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift */,
 				9D580305258CBFDC00BCAB14 /* FileManagerExtensions.swift */,
 				9D175C06259255E300F1B051 /* StringExtensions.swift */,
-				9D175BFC25920F5100F1B051 /* UICollectionViewCellExtensions.swift */,
 				9D175C0025922F2700F1B051 /* UIImageExtensions.swift */,
-				9D175C03259233AC00F1B051 /* UIImageViewExtensions.swift */,
 				9D85A2242593B71F00CE4ECC /* UIButtonExtensions.swift */,
+				9D0C57F6259A371000E8E451 /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -177,10 +174,10 @@
 			isa = PBXGroup;
 			children = (
 				9DF940132587C2DD001C44F0 /* MainVC.swift */,
-				9D580319258CEBFE00BCAB14 /* PredictionVC.swift */,
-				9D85A22E259615B900CE4ECC /* MoreLabelsVC.swift */,
 				9D7F691D258A8B1800CABB2A /* ModelsListVC.swift */,
 				9D7F691A258A865100CABB2A /* ModelDescriptionVC.swift */,
+				9D580319258CEBFE00BCAB14 /* PredictionVC.swift */,
+				9D85A22E259615B900CE4ECC /* MoreLabelsVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -356,7 +353,6 @@
 				9D7F691E258A8B1800CABB2A /* ModelsListVC.swift in Sources */,
 				9D85A23425965E0A00CE4ECC /* MoreLabelsTVC.swift in Sources */,
 				9D85A2282594E12500CE4ECC /* ClassificationResult.swift in Sources */,
-				9D175BFD25920F5100F1B051 /* UICollectionViewCellExtensions.swift in Sources */,
 				9D5802FD258C014E00BCAB14 /* ModelsListCVC.swift in Sources */,
 				9DECCA5E258809AC00E4EE7C /* ImageClassifierModel.swift in Sources */,
 				9D580313258CDC7500BCAB14 /* MobileNet-kopia 5.mlmodel in Sources */,
@@ -364,8 +360,8 @@
 				9DE839A42589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
 				9D580306258CBFDC00BCAB14 /* FileManagerExtensions.swift in Sources */,
 				9DF940122587C2DD001C44F0 /* SceneDelegate.swift in Sources */,
-				9D175C04259233AC00F1B051 /* UIImageViewExtensions.swift in Sources */,
 				9D580312258CDC7500BCAB14 /* MobileNet-kopia 6.mlmodel in Sources */,
+				9D0C57F7259A371100E8E451 /* UIViewExtensions.swift in Sources */,
 				9D85A22F259615B900CE4ECC /* MoreLabelsVC.swift in Sources */,
 				9D85A2252593B71F00CE4ECC /* UIButtonExtensions.swift in Sources */,
 				9D580317258CDC7500BCAB14 /* MobileNet-kopia 2.mlmodel in Sources */,

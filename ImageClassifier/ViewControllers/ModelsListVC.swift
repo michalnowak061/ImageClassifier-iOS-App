@@ -37,10 +37,8 @@ class ModelsListVC: UIViewController {
             if let index = self.selectedModelIndex {
                 let path = self.imageClassifierModel.modelPathsList[index].path
                 
-                self.imageClassifierModel.loadModel(withPath: path)
-                
                 let predictionVC = segue.destination as? PredictionVC
-                predictionVC?.setRequiredData(imageClassifierModel: self.imageClassifierModel)
+                predictionVC?.setRequiredData(imageClassifierModel: self.imageClassifierModel, modelPath: path)
             }
             break
         case "showModelDescriptionVC":

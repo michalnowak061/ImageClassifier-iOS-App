@@ -18,6 +18,7 @@ class PredictionVC: UIViewController {
     
     // MARK: -- Private variable's
     private var imageClassifierModel: ImageClassifierModel!
+    private var modelPath: String!
     private var imagePicker: ImagePicker!
     private var loadedImage: UIImage?
     
@@ -26,7 +27,11 @@ class PredictionVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        self.infoViewSetup()
+        self.loadedImageViewSetup()
         self.defaultViewSetup()
+        
+        self.loadModel()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,6 +55,15 @@ class PredictionVC: UIViewController {
         self.menuButtonSetup()
     }
     
+    private func infoViewSetup() {
+        self.infoView.isHidden = false
+        self.infoView.setRoundedCorners(cornerRadius: self.roundedCornersRadius)
+    }
+    
+    private func loadedImageViewSetup() {
+        self.loadedImageView.setRoundedCorners(cornerRadius: self.roundedCornersRadius)
+    }
+    
     private func showMoreLabelsButtonSetup() {
         self.showMoreLabelsButton.setRoundedCorners(cornerRadius: self.roundedCornersRadius)
         self.showMoreLabelsButton.isHidden = true
@@ -58,6 +72,28 @@ class PredictionVC: UIViewController {
     private func menuButtonSetup() {
         self.menuButton.setRoundedCorners(cornerRadius: self.roundedCornersRadius)
         self.menuButton.isHidden = true
+    }
+    
+    private func loading(continues: Bool) {
+        self.activityIndicator.isHidden = !continues
+        self.modelLoadingLabel.isHidden = !continues
+        if continues {
+            self.activityIndicator.startAnimating()
+        } else {
+            self.activityIndicator.stopAnimating()
+        }
+        
+        self.loadedImageView.isHidden = continues
+        self.infoView.isHidden = continues
+        self.predictionView.isHidden = continues
+    }
+    
+    private func loadModel() {
+        self.loading(continues: true)
+        self.imageClassifierModel.loadModel(withPath: self.modelPath)
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
+            self.loading(continues: false)
+        }
     }
     
     private func showMoreLabelsButtonShow(withDuration duration: Double) {
@@ -85,7 +121,7 @@ class PredictionVC: UIViewController {
         let numberOfIteration = Int(duration / timeInterval)
         var counter = 0
         Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { timer in
-            let randomIndex = Int.random(in: 0...prediction.labelsCount)
+            let randomIndex = Int.random(in: 0...prediction.labelsCount-1)
             self.predictionLabel.text = prediction.classification(atIndex: randomIndex)?.label
             
             counter += 1
@@ -97,13 +133,18 @@ class PredictionVC: UIViewController {
     }
     
     // MARK: -- Public function's
-    public func setRequiredData(imageClassifierModel: ImageClassifierModel) {
-        self.imageClassifierModel = imageClassifierModel
+    public func setRequiredData(imageClassifierModel model: ImageClassifierModel, modelPath path: String) {
+        self.imageClassifierModel = model
+        self.modelPath = path
         self.imageClassifierModel.delegate = self
         self.imageClassifierModel.presentationController = self
     }
     
     // MARK: -- @IBOutle's
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var modelLoadingLabel: UILabel!
+    @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var predictionView: UIView!
     @IBOutlet weak var loadedImageView: UIImageView!
     @IBOutlet weak var predictionProgressBar: MBCircularProgressBarView!
     @IBOutlet weak var predictionLabel: UILabel!
@@ -128,6 +169,7 @@ class PredictionVC: UIViewController {
 // MARK: -- extension's
 extension PredictionVC: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
+        self.infoView.isHidden = true
         self.loadedImageView.image = image
         self.loadedImage = image
         if let image = loadedImage {
