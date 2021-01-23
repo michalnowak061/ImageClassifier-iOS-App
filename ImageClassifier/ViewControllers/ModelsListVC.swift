@@ -8,6 +8,7 @@
 import UIKit
 import Vision
 import SwipeCellKit
+import MobileCoreServices
 
 // MARK: -- ModelsListVC class
 class ModelsListVC: UIViewController {
@@ -36,7 +37,6 @@ class ModelsListVC: UIViewController {
         case "showPredictionVC":
             if let index = self.selectedModelIndex {
                 let path = self.imageClassifierModel.modelPathsList[index].path
-                
                 let predictionVC = segue.destination as? PredictionVC
                 predictionVC?.setRequiredData(imageClassifierModel: self.imageClassifierModel, modelPath: path)
             }
@@ -71,6 +71,7 @@ class ModelsListVC: UIViewController {
     }
     
     private func updateView() {
+        self.modelsPathList = self.imageClassifierModel.modelPathsList
         self.modelsCollectionView.reloadData()
     }
     
@@ -85,6 +86,12 @@ class ModelsListVC: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: -- IBAction's
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        let documentPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeItem as String], in: .import)
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = true
+        present(documentPicker, animated: true, completion: nil)
+    }
 }
 // MARK: -- Extensions
 extension ModelsListVC: UISearchBarDelegate {
@@ -103,7 +110,6 @@ extension ModelsListVC: UISearchBarDelegate {
             self.modelsPathList = filteredlist
             self.updateView()
         } else {
-            self.modelsPathList = self.imageClassifierModel.modelPathsList
             self.updateView()
         }
     }
@@ -131,14 +137,13 @@ extension ModelsListVC: UICollectionViewDelegate, UICollectionViewDataSource, Sw
         
         let size = FileManager().sizeForLocalFilePath(filePath: modelPath)
         let sizeString = FileManager().covertToFileString(with: size)
-        
-        let date = (try? FileManager.default.attributesOfItem(atPath: modelPath))?[.creationDate] as? Date
+        let date = FileManager().extractFileCreatedDate(withPath: modelPath)
         
         cell.viewSetup()
         cell.modelIcon = swiftIcon
-        cell.modelName = modelName
+        cell.modelName = modelName.replacingOccurrences(of: ".mlmodelc", with: "")
         cell.modelFileSize = sizeString
-        cell.modelCreateDate = date?.description ?? ""
+        cell.modelCreateDate = date
         cell.delegate = self
         
         return cell
@@ -186,5 +191,18 @@ extension ModelsListVC: UICollectionViewDelegate, UICollectionViewDataSource, Sw
         infoAction.hidesWhenSelected = true
         
         return [deleteAction, infoAction]
+    }
+}
+
+extension ModelsListVC: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        for fileURL in urls {
+            guard fileURL.path.contains(".mlmodel") else {
+                continue
+            }
+            let modelName = FileManager().getFileName(withPath: fileURL.path)
+            self.imageClassifierModel.addModelPath(modelName: modelName, modelPath: fileURL.path)
+        }
+        self.updateView()
     }
 }

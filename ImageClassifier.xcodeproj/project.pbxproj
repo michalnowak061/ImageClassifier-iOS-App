@@ -12,12 +12,6 @@
 		9D175C07259255E300F1B051 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D175C06259255E300F1B051 /* StringExtensions.swift */; };
 		9D5802FD258C014E00BCAB14 /* ModelsListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5802FC258C014E00BCAB14 /* ModelsListCVC.swift */; };
 		9D580306258CBFDC00BCAB14 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D580305258CBFDC00BCAB14 /* FileManagerExtensions.swift */; };
-		9D580312258CDC7500BCAB14 /* MobileNet-kopia 6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9D58030C258CDC7400BCAB14 /* MobileNet-kopia 6.mlmodel */; };
-		9D580313258CDC7500BCAB14 /* MobileNet-kopia 5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9D58030D258CDC7400BCAB14 /* MobileNet-kopia 5.mlmodel */; };
-		9D580314258CDC7500BCAB14 /* MobileNet-kopia.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9D58030E258CDC7400BCAB14 /* MobileNet-kopia.mlmodel */; };
-		9D580315258CDC7500BCAB14 /* MobileNet-kopia 4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9D58030F258CDC7400BCAB14 /* MobileNet-kopia 4.mlmodel */; };
-		9D580316258CDC7500BCAB14 /* MobileNet-kopia 3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9D580310258CDC7400BCAB14 /* MobileNet-kopia 3.mlmodel */; };
-		9D580317258CDC7500BCAB14 /* MobileNet-kopia 2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9D580311258CDC7400BCAB14 /* MobileNet-kopia 2.mlmodel */; };
 		9D58031A258CEBFE00BCAB14 /* PredictionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D580319258CEBFE00BCAB14 /* PredictionVC.swift */; };
 		9D7F691B258A865100CABB2A /* ModelDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F691A258A865100CABB2A /* ModelDescriptionVC.swift */; };
 		9D7F691E258A8B1800CABB2A /* ModelsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7F691D258A8B1800CABB2A /* ModelsListVC.swift */; };
@@ -46,12 +40,6 @@
 		9D175C06259255E300F1B051 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		9D5802FC258C014E00BCAB14 /* ModelsListCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsListCVC.swift; sourceTree = "<group>"; };
 		9D580305258CBFDC00BCAB14 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
-		9D58030C258CDC7400BCAB14 /* MobileNet-kopia 6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNet-kopia 6.mlmodel"; sourceTree = "<group>"; };
-		9D58030D258CDC7400BCAB14 /* MobileNet-kopia 5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNet-kopia 5.mlmodel"; sourceTree = "<group>"; };
-		9D58030E258CDC7400BCAB14 /* MobileNet-kopia.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNet-kopia.mlmodel"; sourceTree = "<group>"; };
-		9D58030F258CDC7400BCAB14 /* MobileNet-kopia 4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNet-kopia 4.mlmodel"; sourceTree = "<group>"; };
-		9D580310258CDC7400BCAB14 /* MobileNet-kopia 3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNet-kopia 3.mlmodel"; sourceTree = "<group>"; };
-		9D580311258CDC7400BCAB14 /* MobileNet-kopia 2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MobileNet-kopia 2.mlmodel"; sourceTree = "<group>"; };
 		9D580319258CEBFE00BCAB14 /* PredictionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionVC.swift; sourceTree = "<group>"; };
 		9D7F691A258A865100CABB2A /* ModelDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDescriptionVC.swift; sourceTree = "<group>"; };
 		9D7F691D258A8B1800CABB2A /* ModelsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsListVC.swift; sourceTree = "<group>"; };
@@ -119,12 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				9DECCA60258908B100E4EE7C /* MobileNet.mlmodel */,
-				9D580311258CDC7400BCAB14 /* MobileNet-kopia 2.mlmodel */,
-				9D580310258CDC7400BCAB14 /* MobileNet-kopia 3.mlmodel */,
-				9D58030F258CDC7400BCAB14 /* MobileNet-kopia 4.mlmodel */,
-				9D58030D258CDC7400BCAB14 /* MobileNet-kopia 5.mlmodel */,
-				9D58030C258CDC7400BCAB14 /* MobileNet-kopia 6.mlmodel */,
-				9D58030E258CDC7400BCAB14 /* MobileNet-kopia.mlmodel */,
 			);
 			path = TestModels;
 			sourceTree = "<group>";
@@ -345,7 +327,6 @@
 				9DF940142587C2DD001C44F0 /* MainVC.swift in Sources */,
 				9D175C0125922F2700F1B051 /* UIImageExtensions.swift in Sources */,
 				9DECCA61258908B100E4EE7C /* MobileNet.mlmodel in Sources */,
-				9D580315258CDC7500BCAB14 /* MobileNet-kopia 4.mlmodel in Sources */,
 				9DF940102587C2DD001C44F0 /* AppDelegate.swift in Sources */,
 				9D7F691B258A865100CABB2A /* ModelDescriptionVC.swift in Sources */,
 				9DC7FC392589833800CB7B98 /* ImagePickerDelegate.swift in Sources */,
@@ -355,18 +336,13 @@
 				9D85A2282594E12500CE4ECC /* ClassificationResult.swift in Sources */,
 				9D5802FD258C014E00BCAB14 /* ModelsListCVC.swift in Sources */,
 				9DECCA5E258809AC00E4EE7C /* ImageClassifierModel.swift in Sources */,
-				9D580313258CDC7500BCAB14 /* MobileNet-kopia 5.mlmodel in Sources */,
 				9DC7FC362589832400CB7B98 /* ImageClassifierModelDelegate.swift in Sources */,
 				9DE839A42589157500400F0C /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
 				9D580306258CBFDC00BCAB14 /* FileManagerExtensions.swift in Sources */,
 				9DF940122587C2DD001C44F0 /* SceneDelegate.swift in Sources */,
-				9D580312258CDC7500BCAB14 /* MobileNet-kopia 6.mlmodel in Sources */,
 				9D0C57F7259A371100E8E451 /* UIViewExtensions.swift in Sources */,
 				9D85A22F259615B900CE4ECC /* MoreLabelsVC.swift in Sources */,
 				9D85A2252593B71F00CE4ECC /* UIButtonExtensions.swift in Sources */,
-				9D580317258CDC7500BCAB14 /* MobileNet-kopia 2.mlmodel in Sources */,
-				9D580316258CDC7500BCAB14 /* MobileNet-kopia 3.mlmodel in Sources */,
-				9D580314258CDC7500BCAB14 /* MobileNet-kopia.mlmodel in Sources */,
 				9D58031A258CEBFE00BCAB14 /* PredictionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

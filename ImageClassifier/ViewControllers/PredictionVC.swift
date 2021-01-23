@@ -82,7 +82,7 @@ class PredictionVC: UIViewController {
         } else {
             self.activityIndicator.stopAnimating()
         }
-        
+        self.addImageButton.isEnabled = !continues
         self.loadedImageView.isHidden = continues
         self.infoView.isHidden = continues
         self.predictionView.isHidden = continues
@@ -90,7 +90,9 @@ class PredictionVC: UIViewController {
     
     private func loadModel() {
         self.loading(continues: true)
-        self.imageClassifierModel.loadModel(withPath: self.modelPath)
+        DispatchQueue.main.async {
+            self.imageClassifierModel.loadModel(withPath: self.modelPath)
+        }
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
             self.loading(continues: false)
         }
@@ -141,6 +143,7 @@ class PredictionVC: UIViewController {
     }
     
     // MARK: -- @IBOutle's
+    @IBOutlet weak var addImageButton: UIBarButtonItem!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var modelLoadingLabel: UILabel!
     @IBOutlet weak var infoView: UIView!
@@ -152,9 +155,9 @@ class PredictionVC: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     
     // MARK: -- @IBAction's
-    @IBAction func loadButtonPressed(_ sender: UIButton) {
+    @IBAction func loadImageButtonPressed(_ sender: Any) {
         self.defaultViewSetup()
-        self.imagePicker.present(from: sender)
+        self.imagePicker.present()
     }
     
     @IBAction func showMoreLabelsButtonPressed(_ sender: UIButton) {

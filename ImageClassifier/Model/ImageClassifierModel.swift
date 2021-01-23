@@ -43,6 +43,19 @@ class ImageClassifierModel {
         }
     }
     
+    private func compileModel(modelPath path: String) -> String {
+        guard path.contains(".mlmodelc") != true else {
+            return path
+        }
+        do {
+            let url = try MLModel.compileModel(at: URL(fileURLWithPath: path))
+            return url.path
+        } catch {
+            print("Failed to compile ML model: \(error)")
+        }
+        return path
+    }
+    
     // MARK: -- Public function's
     public init() {
         self.fileManager = FileManager()
@@ -51,6 +64,21 @@ class ImageClassifierModel {
     
     public func loadModelPathsFromFolder(withPath path: String) {
         self.modelPathsList = fileManager.getFileListFromDirectory(withPath: path, typeOf: "mlmodel")
+    }
+    
+    public func addModelPath(modelName name: String, modelPath path: String) {
+        var compiledModelPath: String = path
+        if(path.contains(".mlmodelc") == false) {
+            compiledModelPath = self.compileModel(modelPath: path)
+        }
+        if let documentDirectoryPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path {
+            let modelName = name.replacingOccurrences(of: ".mlmodel", with: ".mlmodelc")
+            let modelPath = documentDirectoryPath + "/" + modelName
+            if(FileManager().secureCopyItem(at: URL(fileURLWithPath: compiledModelPath), to: URL(fileURLWithPath: modelPath)) != true) {
+                print("Model copy to", modelPath)
+            }
+            self.modelPathsList.append((modelName, modelPath))
+        }
     }
     
     public func loadModel(withPath path: String) {

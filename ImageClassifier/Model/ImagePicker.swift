@@ -36,8 +36,12 @@ open class ImagePicker: NSObject {
         }
     }
 
-    public func present(from sourceView: UIView) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    public func present() {
+        var alertStyle = UIAlertController.Style.actionSheet
+        if (UIDevice.current.userInterfaceIdiom == .pad) {
+            alertStyle = UIAlertController.Style.alert
+        }
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: alertStyle)
 
         if let action = self.action(for: .camera, title: "Take photo") {
             alertController.addAction(action)
@@ -50,12 +54,6 @@ open class ImagePicker: NSObject {
         }
 
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            alertController.popoverPresentationController?.sourceView = sourceView
-            alertController.popoverPresentationController?.sourceRect = sourceView.bounds
-            alertController.popoverPresentationController?.permittedArrowDirections = [.down, .up]
-        }
 
         self.presentationController?.present(alertController, animated: true)
     }

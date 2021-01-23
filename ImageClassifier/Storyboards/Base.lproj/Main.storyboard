@@ -208,7 +208,13 @@
                             <constraint firstItem="O1d-iG-2km" firstAttribute="leading" secondItem="gZC-Z2-xBm" secondAttribute="leading" id="z6y-MM-oVe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="06D-np-ltS"/>
+                    <navigationItem key="navigationItem" id="06D-np-ltS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="jpN-pB-ujC">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="maj-0q-PkO" id="S4T-mC-qIw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="modelsCollectionView" destination="gZC-Z2-xBm" id="cA6-Ix-TSo"/>
                         <outlet property="searchBar" destination="O1d-iG-2km" id="MSO-Xm-fX2"/>
@@ -234,7 +240,7 @@
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model is loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJx-6U-MS8">
                                 <rect key="frame" x="20" y="447.5" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEk-cy-cfT">
@@ -362,18 +368,6 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a photo" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="0Wm-5K-5lF">
-                                        <rect key="frame" x="8" y="44" width="374" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="↑" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="evB-xT-m3U">
-                                        <rect key="frame" x="8" y="0.0" width="374" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The probability of belonging to a class" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="OXw-UZ-8cp">
                                         <rect key="frame" x="8" y="325.5" width="374" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -384,17 +378,11 @@
                                 <color key="backgroundColor" red="0.1058823529" green="0.1176470588" blue="0.1185038313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="OXw-UZ-8cp" firstAttribute="trailing" secondItem="yex-Ih-AZw" secondAttribute="trailing" id="4oB-vS-iK9"/>
-                                    <constraint firstItem="0Wm-5K-5lF" firstAttribute="top" secondItem="evB-xT-m3U" secondAttribute="bottom" constant="8" symbolic="YES" id="GNK-sR-DuS"/>
                                     <constraint firstItem="OXw-UZ-8cp" firstAttribute="leading" secondItem="yex-Ih-AZw" secondAttribute="leading" id="RNr-s0-Hr7"/>
-                                    <constraint firstItem="evB-xT-m3U" firstAttribute="leading" secondItem="0Wm-5K-5lF" secondAttribute="leading" id="UYu-gJ-rSu"/>
-                                    <constraint firstItem="0Wm-5K-5lF" firstAttribute="trailing" secondItem="OXw-UZ-8cp" secondAttribute="trailing" id="YNB-5r-9Ex"/>
-                                    <constraint firstItem="evB-xT-m3U" firstAttribute="trailing" secondItem="PGq-bj-Yz6" secondAttribute="trailingMargin" id="Yjr-iW-9LY"/>
-                                    <constraint firstItem="evB-xT-m3U" firstAttribute="leading" secondItem="PGq-bj-Yz6" secondAttribute="leadingMargin" id="dgW-ly-z7n"/>
-                                    <constraint firstItem="evB-xT-m3U" firstAttribute="trailing" secondItem="0Wm-5K-5lF" secondAttribute="trailing" id="hVC-tE-O8s"/>
+                                    <constraint firstItem="OXw-UZ-8cp" firstAttribute="trailing" secondItem="PGq-bj-Yz6" secondAttribute="trailingMargin" id="ZBH-JD-EBd"/>
+                                    <constraint firstItem="OXw-UZ-8cp" firstAttribute="leading" secondItem="PGq-bj-Yz6" secondAttribute="leadingMargin" id="buP-SP-xdl"/>
                                     <constraint firstItem="yex-Ih-AZw" firstAttribute="top" secondItem="OXw-UZ-8cp" secondAttribute="bottom" constant="8" symbolic="YES" id="t86-cH-Jkx"/>
-                                    <constraint firstItem="0Wm-5K-5lF" firstAttribute="leading" secondItem="OXw-UZ-8cp" secondAttribute="leading" id="v0I-cn-Zco"/>
                                     <constraint firstAttribute="bottom" secondItem="yex-Ih-AZw" secondAttribute="bottom" id="zRA-QS-pij"/>
-                                    <constraint firstItem="evB-xT-m3U" firstAttribute="top" secondItem="PGq-bj-Yz6" secondAttribute="top" id="zTE-RC-qKW"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -420,27 +408,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mJ8-Ue-hFP">
-                        <barButtonItem key="rightBarButtonItem" id="wY8-ms-6pD">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="cFr-eP-UO3">
-                                <rect key="frame" x="364" y="7" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Add">
-                                            <attributes>
-                                                <font key="NSFont" metaFont="system" size="15"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <connections>
-                                    <action selector="loadButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eeP-li-GOu"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="wY8-ms-6pD">
+                            <connections>
+                                <action selector="loadImageButtonPressed:" destination="BYZ-38-t0r" id="Gre-np-0bQ"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="j1a-xz-Uf3" id="0xJ-9Z-e8S"/>
+                        <outlet property="addImageButton" destination="wY8-ms-6pD" id="2uX-kV-egA"/>
                         <outlet property="infoView" destination="PGq-bj-Yz6" id="q93-Du-ewF"/>
                         <outlet property="loadedImageView" destination="Vtr-hf-wKs" id="oQX-rb-wgJ"/>
                         <outlet property="menuButton" destination="Zyu-Zj-eIq" id="LUw-aT-c4M"/>
