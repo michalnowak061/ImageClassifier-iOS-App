@@ -43,7 +43,7 @@
                                     <action selector="startButtonPressed:" destination="5gm-EQ-9i1" eventType="touchUpInside" id="nfy-9t-tdx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nsb-3b-eOY">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nsb-3b-eOY">
                                 <rect key="frame" x="147" y="539.5" width="120" height="30"/>
                                 <color key="backgroundColor" red="0.1185089871" green="0.1185325012" blue="0.1185038313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Settings">
@@ -53,7 +53,7 @@
                                     <action selector="settingsButtonPressed:" destination="5gm-EQ-9i1" eventType="touchUpInside" id="URS-CO-8s2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNh-zU-GoV">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNh-zU-GoV">
                                 <rect key="frame" x="147" y="576.5" width="120" height="30"/>
                                 <color key="backgroundColor" red="0.1185089871" green="0.1185325012" blue="0.1185038313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

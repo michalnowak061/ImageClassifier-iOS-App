@@ -9,6 +9,8 @@ import UIKit
 import CoreML
 import ImageIO
 import MBCircularProgressBar
+import YPImagePicker
+import PhotoEditorSDK
 
 class PredictionVC: UIViewController {
     // MARK: -- Private parameter's
@@ -19,14 +21,13 @@ class PredictionVC: UIViewController {
     // MARK: -- Private variable's
     private var imageClassifierModel: ImageClassifierModel!
     private var modelPath: String!
-    private var imagePicker: ImagePicker!
     private var loadedImage: UIImage?
+    private var photoEditViewController: PhotoEditViewController!
     
     // MARK: -- Override function's
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         self.infoViewSetup()
         self.loadedImageViewSetup()
         self.defaultViewSetup()
@@ -38,8 +39,6 @@ class PredictionVC: UIViewController {
         case "showMoreLabelsVC":
             let moreLabelsVC = segue.destination as? MoreLabelsVC
             moreLabelsVC?.setRequiredData(imageClassifierModel: self.imageClassifierModel)
-            break
-        case "showMainVC":
             break
         default:
             break
@@ -155,8 +154,28 @@ class PredictionVC: UIViewController {
     
     // MARK: -- @IBAction's
     @IBAction func loadImageButtonPressed(_ sender: Any) {
-        self.defaultViewSetup()
-        self.imagePicker.present()
+        var config = YPImagePickerConfiguration()
+        config.showsPhotoFilters = false
+        config.targetImageSize = YPImageSize.original
+        config.library.isSquareByDefault = false
+        let picker = YPImagePicker(configuration: config)
+        picker.didFinishPicking { [unowned picker] items, cancelled in
+            if let image = items.singlePhoto?.image {
+                self.loadedImage = image
+            }
+            picker.dismiss(animated: true, completion: nil)
+            
+            if(cancelled) {
+                return
+            }
+            if self.loadedImage != nil {
+                let photo = Photo(image: self.loadedImage!)
+                self.photoEditViewController = PhotoEditViewController(photoAsset: photo)
+                self.photoEditViewController.delegate = self
+                self.present(self.photoEditViewController, animated: true, completion: nil)
+            }
+        }
+        present(picker, animated: true, completion: nil)
     }
     
     @IBAction func showMoreLabelsButtonPressed(_ sender: UIButton) {
@@ -169,16 +188,24 @@ class PredictionVC: UIViewController {
 }
 
 // MARK: -- extension's
-extension PredictionVC: ImagePickerDelegate {
-    func didSelect(image: UIImage?) {
+extension PredictionVC: PhotoEditViewControllerDelegate {
+    func photoEditViewController(_ photoEditViewController: PhotoEditViewController, didSave image: UIImage, and data: Data) {
+        photoEditViewController.dismiss(animated: true, completion: nil)
         self.infoView.isHidden = true
         self.loadedImageView.image = image
         self.loadedImage = image
-        if let image = loadedImage {
-            self.imageClassifierModel?.updateClassifications(for: image)
-        }
+        self.imageClassifierModel?.updateClassifications(for: image)
+    }
+    
+    func photoEditViewControllerDidFailToGeneratePhoto(_ photoEditViewController: PhotoEditViewController) {
+        photoEditViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func photoEditViewControllerDidCancel(_ photoEditViewController: PhotoEditViewController) {
+        photoEditViewController.dismiss(animated: true, completion: nil)
     }
 }
+
 extension PredictionVC: ImageClassifierModelDelegate {
     func predictionReady(prediction: ClassificationResult) {
         self.predictionProgressBarShowProgress(prediction: prediction, withDuration: self.predictionProgressBarDuration)
