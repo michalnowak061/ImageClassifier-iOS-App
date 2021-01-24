@@ -13,26 +13,6 @@ extension FileManager {
         return fileName
     }
     
-    func extractFileCreatedDate(withPath path: String) -> String {
-        var dateString = ""
-        do {
-            let aFileAttributes = try FileManager.default.attributesOfItem(atPath: path) as [FileAttributeKey:Any]
-            let theCreationDate = aFileAttributes[FileAttributeKey.creationDate] as? Date ?? Date()
-
-            let formatter: DateFormatter = DateFormatter()
-            formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
-            formatter.timeZone = TimeZone.init(abbreviation: "GMT")
-            formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-
-            //MARK:- Share App Submit Date
-            let readDate: String = formatter.string(from: theCreationDate)
-            dateString = readDate
-        } catch let theError {
-            print("file not found \(theError)")
-        }
-        return dateString
-    }
-    
     func getFileListFromDirectory(withPath path: String, typeOf type: String) -> [(name: String, path: String)] {
         do {
             let files = try FileManager.default.contentsOfDirectory(atPath: path)

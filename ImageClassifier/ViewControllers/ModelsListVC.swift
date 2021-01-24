@@ -25,6 +25,14 @@ class ModelsListVC: UIViewController {
         // Do any additional setup after loading the view.
         self.modelsCVSetup()
         self.searchBarSetup()
+        
+        var modelList = modelPathListJSON()
+        let list = modelList.getModelPathsList()
+        if list.count != 0 {
+            self.imageClassifierModel.modelPathsList = modelList.getModelPathsList()
+            self.modelsPathList = modelList.getModelPathsList()
+            self.updateView()
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -137,13 +145,13 @@ extension ModelsListVC: UICollectionViewDelegate, UICollectionViewDataSource, Sw
         
         let size = FileManager().sizeForLocalFilePath(filePath: modelPath)
         let sizeString = FileManager().covertToFileString(with: size)
-        let date = FileManager().extractFileCreatedDate(withPath: modelPath)
+        let date = (try? FileManager.default.attributesOfItem(atPath: modelPath))?[.creationDate] as? Date
         
         cell.viewSetup()
         cell.modelIcon = swiftIcon
         cell.modelName = modelName.replacingOccurrences(of: ".mlmodelc", with: "")
         cell.modelFileSize = sizeString
-        cell.modelCreateDate = date
+        cell.modelCreateDate = date?.description ?? ""
         cell.delegate = self
         
         return cell
