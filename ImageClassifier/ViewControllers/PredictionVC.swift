@@ -30,7 +30,6 @@ class PredictionVC: UIViewController {
         self.infoViewSetup()
         self.loadedImageViewSetup()
         self.defaultViewSetup()
-        
         self.loadModel()
     }
     

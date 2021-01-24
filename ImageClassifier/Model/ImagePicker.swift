@@ -5,16 +5,15 @@
 //  Created by Michał Nowak on 15/12/2020.
 //
 import UIKit
+import MobileCoreServices
 
-open class ImagePicker: NSObject {
-
+class ImagePicker: NSObject {
     private let pickerController: UIImagePickerController
     private weak var presentationController: UIViewController?
     private weak var delegate: ImagePickerDelegate?
 
     public init(presentationController: UIViewController, delegate: ImagePickerDelegate) {
         self.pickerController = UIImagePickerController()
-
         super.init()
 
         self.presentationController = presentationController
@@ -22,7 +21,7 @@ open class ImagePicker: NSObject {
 
         self.pickerController.delegate = self
         self.pickerController.allowsEditing = true
-        self.pickerController.mediaTypes = ["public.image"]
+        self.pickerController.mediaTypes = [kUTTypeImage as String]
     }
 
     private func action(for type: UIImagePickerController.SourceType, title: String) -> UIAlertAction? {
@@ -52,15 +51,12 @@ open class ImagePicker: NSObject {
         if let action = self.action(for: .photoLibrary, title: "Photo library") {
             alertController.addAction(action)
         }
-
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
         self.presentationController?.present(alertController, animated: true)
     }
 
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
         controller.dismiss(animated: true, completion: nil)
-
         self.delegate?.didSelect(image: image)
     }
 }
@@ -81,5 +77,4 @@ extension ImagePicker: UIImagePickerControllerDelegate {
 }
 
 extension ImagePicker: UINavigationControllerDelegate {
-
 }

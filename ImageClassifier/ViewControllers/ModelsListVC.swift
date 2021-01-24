@@ -28,9 +28,9 @@ class ModelsListVC: UIViewController {
         
         var modelList = modelPathListJSON()
         let list = modelList.getModelPathsList()
-        if list.count != 0 {
-            self.imageClassifierModel.modelPathsList = modelList.getModelPathsList()
-            self.modelsPathList = modelList.getModelPathsList()
+        if modelList.firstSave != true {
+            self.imageClassifierModel.modelPathsList = list
+            self.modelsPathList = list
             self.updateView()
         }
     }

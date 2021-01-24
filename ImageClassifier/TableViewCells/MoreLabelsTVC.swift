@@ -25,7 +25,7 @@ class MoreLabelsTVC: UITableViewCell {
     }
     public var predictionValue: Float {
         get {
-            return Float(self.predictionProgressBar.value)
+            return (self.predictionLabel.text! as NSString).floatValue
         }
         set(newProgress) {
             self.predictionProgressBarShowProgress(CGFloat(newProgress))
@@ -34,7 +34,7 @@ class MoreLabelsTVC: UITableViewCell {
     
     // MARK: -- Private function's
     private func predictionProgressBarShowProgress(_ progress: CGFloat) {
-        self.predictionProgressBar.value = progress * 100
+        self.predictionLabel.text = String(format: "%.0f", Double(progress * 100)) + "%"
     }
     
     // MARK: -- Public function's
@@ -44,5 +44,5 @@ class MoreLabelsTVC: UITableViewCell {
     
     // MARK: -- IBOutlet's
     @IBOutlet weak var classLabel: UILabel!
-    @IBOutlet weak var predictionProgressBar: MBCircularProgressBarView!
+    @IBOutlet weak var predictionLabel: UILabel!
 }

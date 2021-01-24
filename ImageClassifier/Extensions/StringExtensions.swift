@@ -7,6 +7,8 @@
 
 import Foundation
 
+let languageKey = "languageKey"
+
 extension String {
     private static let slugSafeCharacters = CharacterSet(charactersIn: "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-")
 
@@ -29,5 +31,13 @@ extension String {
     func removeSpecialCharsFromString(text: String) -> String {
         let okayChars = Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890+-=().!_")
         return text.filter {okayChars.contains($0) }
+    }
+    
+    func localizedLanguage() -> String? {
+        var defaultLanguage = "English"
+        if let selectedLanguage = UserDefaults.standard.string(forKey: languageKey) {
+            defaultLanguage = selectedLanguage
+        }
+        return NSLocalizedString(self, tableName: defaultLanguage, comment: "")
     }
 }
