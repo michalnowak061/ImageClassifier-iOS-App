@@ -83,6 +83,12 @@ class ModelsListVC: UIViewController {
         self.modelsCollectionView.reloadData()
     }
     
+    private func printAlert() {
+        let alert = UIAlertController(title: "Model loading error", message: "It's not CoreML model. Select file with .mlmodel extension", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     // MARK: -- Public function's
     public func setRequiredData(imageClassifierModel: ImageClassifierModel) {
         self.imageClassifierModel = imageClassifierModel
@@ -206,6 +212,7 @@ extension ModelsListVC: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         for fileURL in urls {
             guard fileURL.path.contains(".mlmodel") else {
+                self.printAlert()
                 continue
             }
             let modelName = FileManager().getFileName(withPath: fileURL.path)
