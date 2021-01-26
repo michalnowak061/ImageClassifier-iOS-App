@@ -79,7 +79,6 @@ class ModelsListVC: UIViewController {
     }
     
     private func updateView() {
-        self.modelsPathList = self.imageClassifierModel.modelPathsList
         self.modelsCollectionView.reloadData()
     }
     
@@ -124,6 +123,7 @@ extension ModelsListVC: UISearchBarDelegate {
             self.modelsPathList = filteredlist
             self.updateView()
         } else {
+            self.modelsPathList = self.imageClassifierModel.modelPathsList
             self.updateView()
         }
     }
@@ -218,6 +218,7 @@ extension ModelsListVC: UIDocumentPickerDelegate {
             let modelName = FileManager().getFileName(withPath: fileURL.path)
             self.imageClassifierModel.addModelPath(modelName: modelName, modelPath: fileURL.path)
         }
+        self.modelsPathList = self.imageClassifierModel.modelPathsList
         self.updateView()
     }
 }
