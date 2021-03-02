@@ -157,7 +157,14 @@ extension ModelsListVC: UICollectionViewDelegate, UICollectionViewDataSource, Sw
         cell.modelIcon = swiftIcon
         cell.modelName = modelName.replacingOccurrences(of: ".mlmodelc", with: "")
         cell.modelFileSize = sizeString
-        cell.modelCreateDate = date?.description ?? ""
+        let df: DateFormatter = DateFormatter()
+        let format = DateFormatter.dateFormat(fromTemplate: "dMMMMyyyyhhmmaz",
+                                              options: 0,
+                                              locale: Locale.current)
+        df.dateFormat = format
+        if let d = date {
+            cell.modelCreateDate = df.string(from: d)
+        }
         cell.delegate = self
         
         return cell
