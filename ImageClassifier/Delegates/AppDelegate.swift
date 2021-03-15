@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import PhotoEditorSDK
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,9 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        if let licenseURL = Bundle.main.url(forResource: "pesdk_ios_license", withExtension: "") {
-            PESDK.unlockWithLicense(at: licenseURL)
-        }
+        
         return true
     }
 

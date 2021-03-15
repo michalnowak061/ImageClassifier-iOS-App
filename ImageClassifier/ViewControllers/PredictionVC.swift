@@ -9,8 +9,6 @@ import UIKit
 import CoreML
 import ImageIO
 import MBCircularProgressBar
-import YPImagePicker
-import PhotoEditorSDK
 
 class PredictionVC: UIViewController {
     // MARK: -- Private parameter's
@@ -21,8 +19,15 @@ class PredictionVC: UIViewController {
     // MARK: -- Private variable's
     private var imageClassifierModel: ImageClassifierModel!
     private var modelPath: String!
-    private var loadedImage: UIImage?
-    private var photoEditViewController: PhotoEditViewController!
+    private var loadedImage: UIImage? {
+        get {
+            return self.loadedImageView.image
+        }
+        set(newImage) {
+            self.loadedImageView.image = newImage
+        }
+    }
+    private var imagePicker: UIImagePickerController!
     
     // MARK: -- Override function's
     override func viewDidLoad() {
@@ -32,6 +37,7 @@ class PredictionVC: UIViewController {
         self.loadedImageViewSetup()
         self.defaultViewSetup()
         self.loadModel()
+        self.imagePickerSetup()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,6 +57,13 @@ class PredictionVC: UIViewController {
         self.predictionLabel.text = "Prediction label"
         self.showMoreLabelsButtonSetup()
         self.menuButtonSetup()
+    }
+    
+    private func imagePickerSetup() {
+        self.imagePicker = UIImagePickerController()
+        self.imagePicker.delegate = self
+        self.imagePicker.allowsEditing = true
+        self.imagePicker.mediaTypes = ["public.image"]
     }
     
     private func infoViewSetup() {
@@ -80,7 +93,8 @@ class PredictionVC: UIViewController {
         } else {
             self.activityIndicator.stopAnimating()
         }
-        self.addImageButton.isEnabled = !continues
+        self.fromCameraButton.isEnabled = !continues
+        self.fromLibraryButton.isEnabled = !continues
         self.loadedImageView.isHidden = continues
         self.infoView.isHidden = continues
         self.predictionView.isHidden = continues
@@ -141,7 +155,8 @@ class PredictionVC: UIViewController {
     }
     
     // MARK: -- @IBOutle's
-    @IBOutlet weak var addImageButton: UIBarButtonItem!
+    @IBOutlet weak var fromCameraButton: UIBarButtonItem!
+    @IBOutlet weak var fromLibraryButton: UIBarButtonItem!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var modelLoadingLabel: UILabel!
     @IBOutlet weak var infoView: UIView!
@@ -153,29 +168,17 @@ class PredictionVC: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     
     // MARK: -- @IBAction's
-    @IBAction func loadImageButtonPressed(_ sender: Any) {
-        var config = YPImagePickerConfiguration()
-        config.showsPhotoFilters = false
-        config.targetImageSize = YPImageSize.original
-        config.library.isSquareByDefault = false
-        let picker = YPImagePicker(configuration: config)
-        picker.didFinishPicking { [unowned picker] items, cancelled in
-            if let image = items.singlePhoto?.image {
-                self.loadedImage = image
-            }
-            picker.dismiss(animated: true, completion: nil)
-            
-            if(cancelled) {
-                return
-            }
-            if self.loadedImage != nil {
-                let photo = Photo(image: self.loadedImage!)
-                self.photoEditViewController = PhotoEditViewController(photoAsset: photo)
-                self.photoEditViewController.delegate = self
-                self.present(self.photoEditViewController, animated: true, completion: nil)
-            }
+    @IBAction func fromCameraButtonPressed(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            self.imagePicker.sourceType = .camera
+            self.imagePicker.cameraCaptureMode = .photo
+            self.present(self.imagePicker, animated: true)
         }
-        present(picker, animated: true, completion: nil)
+    }
+    
+    @IBAction func fromPhotoLibraryButtonPressed(_ sender: Any) {
+        self.imagePicker.sourceType = .photoLibrary
+        self.present(self.imagePicker, animated: true)
     }
     
     @IBAction func showMoreLabelsButtonPressed(_ sender: UIButton) {
@@ -188,21 +191,16 @@ class PredictionVC: UIViewController {
 }
 
 // MARK: -- extension's
-extension PredictionVC: PhotoEditViewControllerDelegate {
-    func photoEditViewController(_ photoEditViewController: PhotoEditViewController, didSave image: UIImage, and data: Data) {
-        photoEditViewController.dismiss(animated: true, completion: nil)
-        self.infoView.isHidden = true
-        self.loadedImageView.image = image
-        self.loadedImage = image
-        self.imageClassifierModel?.updateClassifications(for: image)
-    }
-    
-    func photoEditViewControllerDidFailToGeneratePhoto(_ photoEditViewController: PhotoEditViewController) {
-        photoEditViewController.dismiss(animated: true, completion: nil)
-    }
-    
-    func photoEditViewControllerDidCancel(_ photoEditViewController: PhotoEditViewController) {
-        photoEditViewController.dismiss(animated: true, completion: nil)
+extension PredictionVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.loadedImage = image
+            self.imagePicker.dismiss(animated: true)
+            self.infoView.isHidden = true
+            self.loadedImageView.image = image
+            self.loadedImage = image
+            self.imageClassifierModel?.updateClassifications(for: image)
+        }
     }
 }
 

@@ -1,0 +1,20 @@
+PODS:
+  - MBCircularProgressBar (0.3.5)
+  - SwipeCellKit (2.7.1)
+
+DEPENDENCIES:
+  - MBCircularProgressBar
+  - SwipeCellKit
+
+SPEC REPOS:
+  trunk:
+    - MBCircularProgressBar
+    - SwipeCellKit
+
+SPEC CHECKSUMS:
+  MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
+
+PODFILE CHECKSUM: 8bbab872d568cad0db38d9973e04f079e6b860b7
+
+COCOAPODS: 1.10.1
