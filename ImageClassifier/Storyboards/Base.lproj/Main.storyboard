@@ -414,7 +414,7 @@
                                     <action selector="fromCameraButtonPressed:" destination="BYZ-38-t0r" id="Gre-np-0bQ"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="photo.on.rectangle" catalog="system" id="0W1-ab-IiB">
+                            <barButtonItem systemItem="add" id="0W1-ab-IiB">
                                 <connections>
                                     <action selector="fromPhotoLibraryButtonPressed:" destination="BYZ-38-t0r" id="pZI-in-6Mr"/>
                                 </connections>
@@ -715,6 +715,5 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ImageClassifierIcon" width="128" height="128"/>
-        <image name="photo.on.rectangle" catalog="system" width="128" height="96"/>
     </resources>
 </document>
