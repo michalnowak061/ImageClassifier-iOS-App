@@ -37,9 +37,6 @@ After selecting the model, you can load a photo from your camera roll or take a 
 * Prediction as circular progress bar: https://github.com/MatiBot/MBCircularProgressBar
 
 ## Contact with me
-[![Linkedin](https://img.shields.io/badge/Linkedin-@mnowak061-blue.svg?style=flat)](www.linkedin.com/in/michał-nowak-53075a17a)
-[![Facebook](https://img.shields.io/badge/Facebook-@mnowak061-blue.svg?style=flat)](https://www.facebook.com/mnowak061/)
-
-<p align="left"> <img src="https://i.imgur.com/Ba61VxB.png"{:height="10%" width="10%"} />
-		 <img src="https://i.imgur.com/MYo1OfP.png"{:height="10%" width="10%"} />
-		 <img src="https://i.imgur.com/9KYCrE2.png"{:height="10%" width="10%"} </p>
+<a href="https://www.linkedin.com/in/michał-nowak-53075a17a/"> <img src="https://i.imgur.com/Ba61VxB.png" width="50" height="50" /> </a>
+<a href="https://www.facebook.com/mnowak061/"> <img src="https://i.imgur.com/MYo1OfP.png" width="50" height="50" /> </a>
+<a href="https://www.instagram.com/mnowak061/"> <img src="https://i.imgur.com/9KYCrE2.png" width="50" height="50" /> </a>
