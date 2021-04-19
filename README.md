@@ -49,5 +49,4 @@ After selecting the model, you can load a photo from your camera roll or take a 
 
 ## Contact
 <a href="https://www.linkedin.com/in/michał-nowak-53075a17a/"> <img src="https://i.imgur.com/Ba61VxB.png" width="50" height="50" /> </a>
-<a href="https://www.facebook.com/mnowak061/"> <img src="https://i.imgur.com/MYo1OfP.png" width="50" height="50" /> </a>
-<a href="https://www.instagram.com/mnowak061/"> <img src="https://i.imgur.com/9KYCrE2.png" width="50" height="50" /> </a>
+<a href="https://twitter.com/mnowak061"> <img src="https://imgur.com/ocbAQn7.png" width="50" height="50" /> </a>
